@@ -27,7 +27,7 @@ sudo pip2 install \
     pbkdf2==1.3 \
     jsonrpclib==0.1.7 \
     PySocks==1.6.7 \
-    x11_hash>=1.4 \
+    xevan_hash>=0.1 \
     protobuf==2.6.1 \
     mnemonic==0.18 \
     btchip-python==0.1.23 \

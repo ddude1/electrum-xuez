@@ -50,6 +50,7 @@ setup(
     ],
     dependency_links=[
         'git+https://github.com/akhavr/x11_hash@1.4#egg=x11_hash-1.4',
+		'git+https://github.com/ddude1/Xevan_in_Python.git@0.2#egg=xevan_hash',
         'git+https://github.com/electrum-xuez/python-trezor@v0.6.13#egg=trezor',
     ],
     packages=[

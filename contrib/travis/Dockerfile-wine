@@ -35,7 +35,7 @@ RUN cp -r SCRIPTS/* $WINEPREFIX/drive_c/Python27/Scripts/
 RUN wineboot --update && xvfb-run -a wine $PYHOME/python.exe -B \
      $WINEPREFIX/drive_c/Python27/Scripts/pywin32_postinstall.py -install
 
-COPY ./x11_hash/build/lib.win32-2.7/x11_hash.pyd $WINEPREFIX/drive_c/Python27/Lib/site-packages
+COPY ./xevan_hash/build/lib.win32-2.7/xevan_hash.pyd $WINEPREFIX/drive_c/Python27/Lib/site-packages
 COPY ./python-trezor/dist/Python27 $WINEPREFIX/drive_c/Python27
 
 RUN rm -rf /tmp/.wine-* ; wineboot --update ; xvfb-run -a wine nsis.exe /S

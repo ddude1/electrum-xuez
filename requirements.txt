@@ -11,3 +11,4 @@ git+https://github.com/akhavr/x11_hash@1.4#egg=x11_hash
 git+https://github.com/trezor/python-trezor@v0.6.13#egg=trezor
 git+https://github.com/keepkey/python-keepkey@v0.7.2#egg=keepkey
 git+https://github.com/LedgerHQ/btchip-python.git@v0.1.17#egg=btchip
+git+https://github.com/ddude1/Xevan_in_Python.git@0.2#egg=xevan_hash
