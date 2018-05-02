@@ -5,17 +5,17 @@ import time
 import sys
 import traceback
 
-import electrum_dash
-from electrum_dash import bitcoin
-from electrum_dash.bitcoin import (TYPE_ADDRESS, int_to_hex, var_int,
+import electrum_xuez
+from electrum_xuez import bitcoin
+from electrum_xuez.bitcoin import (TYPE_ADDRESS, int_to_hex, var_int,
                                    bc_address_to_hash_160, ADDRTYPE_P2PKH,
                                    hash_160_to_bc_address, ADDRTYPE_P2SH)
-from electrum_dash.i18n import _
-from electrum_dash.plugins import BasePlugin, hook
-from electrum_dash.keystore import Hardware_KeyStore, parse_xpubkey
-from electrum_dash.transaction import push_script, Transaction
+from electrum_xuez.i18n import _
+from electrum_xuez.plugins import BasePlugin, hook
+from electrum_xuez.keystore import Hardware_KeyStore, parse_xpubkey
+from electrum_xuez.transaction import push_script, Transaction
 from ..hw_wallet import HW_PluginBase
-from electrum_dash.util import format_satoshis_plain, print_error, is_verbose
+from electrum_xuez.util import format_satoshis_plain, print_error, is_verbose
 
 
 def setAlternateCoinVersions(self, regular, p2sh):
@@ -163,7 +163,7 @@ class Ledger_Client():
                 self.perform_hw1_preflight()
             except BTChipException as e:
                 if (e.sw == 0x6d00):
-                    raise BaseException("Device not in Dash mode")
+                    raise BaseException("Device not in Xuez mode")
                 raise e
             self.preflightDone = True
 

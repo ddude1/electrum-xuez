@@ -1,29 +1,29 @@
 # Setup electrumx testnet server with docker
 
-## 1. Setup dashd node with docker
+## 1. Setup xuezd node with docker
 
-Used docker dashd image has `txindex=1` setting in dash.conf,
+Used docker xuezd image has `txindex=1` setting in xuez.conf,
 which is need by electrumx server.
 
 Create network to link with electrumx server.
 
 ```
-docker network create dash-testnet
+docker network create xuez-testnet
 ```
 
-Create volume to store dashd data and settings.
+Create volume to store xuezd data and settings.
 
 ```
-docker volume create dashd-data-testnet
+docker volume create xuezd-data-testnet
 ```
 
-Start dashd container.
+Start xuezd container.
 
 ```
-docker run --restart=always -v dashd-data-testnet:/dash \
-    --name=dashd-node-testnet --net dash-testnet -d \
+docker run --restart=always -v xuezd-data-testnet:/xuez \
+    --name=xuezd-node-testnet --net xuez-testnet -d \
     --env TESTNET=1 \
-    -p 19999:19999 -p 127.0.0.1:19998:19998 zebralucky/dashd:v0.12.2
+    -p 19999:19999 -p 127.0.0.1:19998:19998 zebralucky/xuezd:v0.12.2
 ```
 
 **Notes**:
@@ -35,17 +35,17 @@ Copy or change RPC password. Random password generated
 on first container startup.
 
 ```
-docker exec -it dashd-node-testnet bash -l
+docker exec -it xuezd-node-testnet bash -l
 
 # ... login to container
 
-cat .dashcore/dash.conf | grep rpcpassword
+cat .xuezcore/xuez.conf | grep rpcpassword
 ```
 
-See log of dashd.
+See log of xuezd.
 
 ```
-docker logs dashd-node-testnet
+docker logs xuezd-node-testnet
 ```
 
 ## 2. Setup electrumx server with docker
@@ -53,18 +53,18 @@ docker logs dashd-node-testnet
 Create volume to store elextrumx server data and settings.
 
 ```
-docker volume create electrumx-dash-data-testnet
+docker volume create electrumx-xuez-data-testnet
 ```
 
 Start elextrumx container.
 
 ```
-docker run --restart=always -v electrumx-dash-data-testnet:/data \
-    --name electrumx-dash-testnet --net dash-testnet -d \
-    -p 51001:51001 -p 51002:51002 zebralucky/electrumx-dash:testnet
+docker run --restart=always -v electrumx-xuez-data-testnet:/data \
+    --name electrumx-xuez-testnet --net xuez-testnet -d \
+    -p 51001:51001 -p 51002:51002 zebralucky/electrumx-xuez:testnet
 ```
 
-Change DAEMON_URL `rpcpasswd` to password from dashd and creaate SSL cert.
+Change DAEMON_URL `rpcpasswd` to password from xuezd and creaate SSL cert.
 
 **Notes**:
  - DAEMON_URL as each URL can not contain some symbols.
@@ -73,7 +73,7 @@ Change DAEMON_URL `rpcpasswd` to password from dashd and creaate SSL cert.
  https://github.com/moby/moby/issues/22054
 
 ```
-docker exec -it electrumx-dash-testnet bash -l
+docker exec -it electrumx-xuez-testnet bash -l
 
 # ... login to container
 
@@ -98,13 +98,13 @@ exit
 
 # Restart electrumx container to switch on new RPC password
 
-docker restart electrumx-dash-testnet
+docker restart electrumx-xuez-testnet
 ```
 
 See log of electrumx server.
 
 ```
-docker exec -it electrumx-dash-testnet bash -l
+docker exec -it electrumx-xuez-testnet bash -l
 
 # ... login to container
 
@@ -113,5 +113,5 @@ tail /data/log/current
 # or less /data/log/current
 ```
 
-Wait some time, when electrumx sync with dashd and
+Wait some time, when electrumx sync with xuezd and
 starts listen on client ports. It can be seen on `/data/log/current`.

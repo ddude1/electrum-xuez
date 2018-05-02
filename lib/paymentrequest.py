@@ -50,14 +50,14 @@ import rsakey
 from bitcoin import TYPE_ADDRESS
 
 REQUEST_HEADERS = {
-    'Accept': 'application/dash-paymentrequest',
-    'User-Agent': 'Electrum-DASH',
+    'Accept': 'application/xuez-paymentrequest',
+    'User-Agent': 'Electrum-XUEZ',
 }
 
 ACK_HEADERS = {
-    'Content-Type': 'application/dash-payment',
-    'Accept': 'application/dash-paymentack',
-    'User-Agent': 'Electrum-DASH'
+    'Content-Type': 'application/xuez-payment',
+    'Accept': 'application/xuez-paymentack',
+    'User-Agent': 'Electrum-XUEZ'
 }
 
 ca_path = requests.certs.where()
@@ -88,7 +88,7 @@ def get_payment_request(url):
             response.raise_for_status()
             # Guard against `bitcoin:`-URIs with invalid payment request URLs
             if "Content-Type" not in response.headers \
-            or response.headers["Content-Type"] != "application/dash-paymentrequest":
+            or response.headers["Content-Type"] != "application/xuez-paymentrequest":
                 data = None
                 error = "payment URL not pointing to a payment request handling server"
             else:
@@ -280,7 +280,7 @@ class PaymentRequest:
 
         ref_out = paymnt.refund_to.add()
         ref_out.script = transaction.Transaction.pay_script(TYPE_ADDRESS, refund_addr)
-        paymnt.memo = "Paid using Electrum-DASH"
+        paymnt.memo = "Paid using Electrum-XUEZ"
         pm = paymnt.SerializeToString()
 
         payurl = urlparse.urlparse(pay_det.payment_url)
