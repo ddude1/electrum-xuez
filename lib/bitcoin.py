@@ -44,8 +44,8 @@ import xevan_hash
 # https://github.com/xuezpay/xuez/ 0.11.0 Release notes for drkp/drkv/DRKP/DRKV
 # https://github.com/satoshilabs/slips/blob/master/slip-0044.md
 TESTNET = False
-ADDRTYPE_P2PKH = 48
-ADDRTYPE_P2SH = 12
+ADDRTYPE_P2PKH = 75
+ADDRTYPE_P2SH = 18
 WIF = 212
 XPRV_HEADER = 0x0221312b
 XPUB_HEADER = 0x022d2533

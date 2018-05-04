@@ -21,12 +21,12 @@ except ImportError:
 
 class Test_hash(unittest.TestCase):
     """ The block used here was arbitrarily chosen.
-        Block height: 339142."""
+        Block height: 37327."""
 
     def test_hash_block(self):
-        raw_header = '030000001a12ed8fe3b2abe61161c3171f20a4dff83e721298934943ff86170000000000972b51909e1911b9d4462a448cfb14b6d3d2e25151eb75b3e0f252f39a84d22ac4d2fd55e85b1d1b116e56de'
+        raw_header = '04000000c02283f36d52320081180549697828ce1cf9888bb02e841418a1b60001000000410f16f01c416b75080cbe1ce25856ddb18c367b246e302d26ec39d332679825ab58ec5a2a86031d7e0e00000000000000000000000000000000000000000000000000000000000000000000'
         header_hash = rev_hex(PoWHash(raw_header.decode('hex')).encode('hex'))
-        self.assertEqual('000000000008aba1c6b076ba5f147b39007cb1f9c34398960edc7c9d1edf8ad7', header_hash)
+        self.assertEqual('00000003106acb19e3fa3014bf78014521e5a4836da57282d92d36ccc40b16e7', header_hash)
 
 
 class Test_bitcoin(unittest.TestCase):
