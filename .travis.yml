@@ -23,6 +23,7 @@ before_install:
 install:
 - if [[ -z $TRAVIS_TAG ]] && [[ $TRAVIS_OS_NAME == 'linux' ]]; then pip install tox;
   fi
+- pip install git+git://github.com/ddude1/Xevan_in_Python.git  
 script:
 - if [[ -z $TRAVIS_TAG ]] && [[ $TRAVIS_OS_NAME == 'linux' ]]; then tox; fi
 - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then ./build/travis-build-osx.sh ; else ./build/travis-build-linux.sh;

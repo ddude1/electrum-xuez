@@ -6,7 +6,7 @@ fi
 
 cd build
 
-docker build -f Dockerfile-linux -t akhavr/electrum-xuez-release:Linux .
+docker build -f Dockerfile-linux -t ddude1/electrum-xuez-release:Linux .
 ./python-xevan_hash-wine.sh
 ./python-trezor-wine.sh
-docker build -f Dockerfile-wine -t akhavr/electrum-xuez-release:Wine .
+docker build -f Dockerfile-wine -t ddude1/electrum-xuez-release:Wine .
