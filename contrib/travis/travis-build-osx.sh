@@ -1,20 +1,20 @@
 #!/bin/bash
-BUILD_REPO_URL=https://github.com/akhavr/electrum-dash.git
+BUILD_REPO_URL=https://github.com/ddude1/electrum-xuez.git
 
 cd build
 
 if [[ -z $TRAVIS_TAG ]]; then
   exit 0
 else
-  git clone --branch $TRAVIS_TAG $BUILD_REPO_URL electrum-dash
+  git clone --branch $TRAVIS_TAG $BUILD_REPO_URL electrum-xuez
 fi
 
-cd electrum-dash
+cd electrum-xuez
 
 export PY36BINDIR=/Library/Frameworks/Python.framework/Versions/3.6/bin/
 export PATH=$PATH:$PY36BINDIR
-source ./contrib/travis/electrum_dash_version_env.sh;
-echo wine build version is $ELECTRUM_DASH_VERSION
+source ./contrib/travis/electrum_xuez_version_env.sh;
+echo wine build version is $ELECTRUM_XUEZ_VERSION
 
 sudo pip3 install -r contrib/requirements.txt
 sudo pip3 install \
@@ -31,9 +31,9 @@ cp contrib/pyi_tctl_runtimehook.py .
 
 pyinstaller \
     -y \
-    --name electrum-dash-$ELECTRUM_DASH_VERSION.bin \
+    --name electrum-xuez-$ELECTRUM_XUEZ_VERSION.bin \
     osx.spec
 
-sudo hdiutil create -fs HFS+ -volname "Electrum-DASH" \
-    -srcfolder dist/Electrum-DASH.app \
-    dist/electrum-dash-$ELECTRUM_DASH_VERSION-macosx.dmg
+sudo hdiutil create -fs HFS+ -volname "Electrum-XUEZ" \
+    -srcfolder dist/Electrum-XUEZ.app \
+    dist/electrum-xuez-$ELECTRUM_XUEZ_VERSION-macosx.dmg

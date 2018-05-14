@@ -8,8 +8,8 @@ from PyQt5.QtWidgets import (
 import os
 import qrcode
 
-import electrum_dash
-from electrum_dash.i18n import _
+import electrum_xuez
+from electrum_xuez.i18n import _
 from .util import WindowModalDialog
 
 
@@ -102,7 +102,7 @@ class QRDialog(WindowModalDialog):
         hbox = QHBoxLayout()
         hbox.addStretch(1)
 
-        config = electrum_dash.get_config()
+        config = electrum_xuez.get_config()
         if config:
             filename = os.path.join(config.path, "qrcode.png")
 
