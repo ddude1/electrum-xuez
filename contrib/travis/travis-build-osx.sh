@@ -1,5 +1,5 @@
 #!/bin/bash
-BUILD_REPO_URL=https://github.com/akhavr/electrum-xuez.git
+BUILD_REPO_URL=https://github.com/ddude1/electrum-xuez.git
 
 export PATH="/usr/local/opt/python@2/bin:$PATH"
 export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
