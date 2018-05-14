@@ -24,8 +24,8 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from electrum_xuez.plugins import BasePlugin, hook
-from electrum_xuez.i18n import _
+from electrum_dash.plugins import BasePlugin, hook
+from electrum_dash.i18n import _
 
 
 class HW_PluginBase(BasePlugin):
@@ -41,7 +41,7 @@ class HW_PluginBase(BasePlugin):
         self.keystore_class.plugin = self
 
     def is_enabled(self):
-        return self.libraries_available
+        return True
 
     def device_manager(self):
         return self.parent.device_manager

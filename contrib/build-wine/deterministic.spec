@@ -17,7 +17,7 @@ hiddenimports = [
     'lib.websockets',
     'gui.qt',
 
-    'memonic',  # required by python-trezor
+    'mnemonic',  # required by python-trezor
 
     'plugins',
 
@@ -35,16 +35,17 @@ hiddenimports = [
 ]
 
 datas = [
-    ('cacert.pem', 'requests'),
-    ('lib/currencies.json', 'electrum_xuez'),
-    ('lib/wordlist', 'electrum_xuez/wordlist'),
+    ('lib/servers.json', 'electrum_dash'),
+    ('lib/servers_testnet.json', 'electrum_dash'),
+    ('lib/currencies.json', 'electrum_dash'),
+    ('lib/wordlist', 'electrum_dash/wordlist'),
 ]
 
 # https://github.com/pyinstaller/pyinstaller/wiki/Recipe-remove-tkinter-tcl
 sys.modules['FixTk'] = None
 excludes = ['FixTk', 'tcl', 'tk', '_tkinter', 'tkinter', 'Tkinter']
 
-a = Analysis(['electrum-xuez'],
+a = Analysis(['electrum-dash'],
              pathex=['plugins'],
              hiddenimports=hiddenimports,
              datas=datas,
@@ -57,14 +58,14 @@ for d in a.datas:
         a.datas.remove(d)
         break
 
-# Add TOC to electrum_xuez, electrum_xuez_gui, electrum_xuez_plugins
+# Add TOC to electrum_dash, electrum_dash_gui, electrum_dash_plugins
 for p in sorted(a.pure):
     if p[0].startswith('lib') and p[2] == 'PYMODULE':
-        a.pure += [('electrum_xuez%s' % p[0][3:] , p[1], p[2])]
+        a.pure += [('electrum_dash%s' % p[0][3:] , p[1], p[2])]
     if p[0].startswith('gui') and p[2] == 'PYMODULE':
-        a.pure += [('electrum_xuez_gui%s' % p[0][3:] , p[1], p[2])]
+        a.pure += [('electrum_dash_gui%s' % p[0][3:] , p[1], p[2])]
     if p[0].startswith('plugins') and p[2] == 'PYMODULE':
-        a.pure += [('electrum_xuez_plugins%s' % p[0][7:] , p[1], p[2])]
+        a.pure += [('electrum_dash_plugins%s' % p[0][7:] , p[1], p[2])]
 
 pyz = PYZ(a.pure)
 
@@ -75,7 +76,7 @@ exe = EXE(pyz,
           strip=False,
           upx=False,
           console=False,
-          icon='icons/electrum-xuez.ico',
+          icon='icons/electrum-dash.ico',
           name=os.path.join('build\\pyi.win32\\electrum', cmdline_name))
 
 # exe with console output
@@ -86,12 +87,12 @@ conexe = EXE(pyz,
           strip=False,
           upx=False,
           console=True,
-          icon='icons/electrum-xuez.ico',
+          icon='icons/electrum-dash.ico',
           name=os.path.join('build\\pyi.win32\\electrum',
                             'console-%s' % cmdline_name))
 
 # trezorctl separate executable
-tctl_a = Analysis(['C:/Python27/Scripts/trezorctl'],
+tctl_a = Analysis(['C:/Python34/Scripts/trezorctl'],
                   hiddenimports=['pkgutil'],
                   excludes=excludes,
                   runtime_hooks=['pyi_tctl_runtimehook.py'])
@@ -112,4 +113,4 @@ coll = COLLECT(exe, conexe, tctl_exe,
                a.datas,
                strip=False,
                upx=False,
-               name=os.path.join('dist', 'electrum-xuez'))
+               name=os.path.join('dist', 'electrum-dash'))

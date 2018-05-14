@@ -1,4 +1,6 @@
 # -*- mode: python -*-
+import os
+import os.path
 import sys
 
 
@@ -9,6 +11,8 @@ for i, x in enumerate(sys.argv):
 else:
     raise BaseException('no name')
 
+PY36BINDIR =  os.environ.get('PY36BINDIR')
+
 hiddenimports = [
     'lib',
     'lib.base_wizard',
@@ -17,7 +21,7 @@ hiddenimports = [
     'lib.websockets',
     'gui.qt',
 
-    'memonic',  # required by python-trezor
+    'mnemonic',  # required by python-trezor
 
     'plugins',
 
@@ -35,16 +39,17 @@ hiddenimports = [
 ]
 
 datas = [
-    ('packages/requests/cacert.pem', 'packages/requests'),
-    ('lib/currencies.json', 'electrum_xuez'),
-    ('lib/wordlist', 'electrum_xuez/wordlist'),
+    ('lib/servers.json', 'electrum_dash'),
+    ('lib/servers_testnet.json', 'electrum_dash'),
+    ('lib/currencies.json', 'electrum_dash'),
+    ('lib/wordlist', 'electrum_dash/wordlist'),
 ]
 
 # https://github.com/pyinstaller/pyinstaller/wiki/Recipe-remove-tkinter-tcl
 sys.modules['FixTk'] = None
 excludes = ['FixTk', 'tcl', 'tk', '_tkinter', 'tkinter', 'Tkinter']
 
-a = Analysis(['electrum-xuez'],
+a = Analysis(['electrum-dash'],
              pathex=['plugins'],
              hiddenimports=hiddenimports,
              datas=datas,
@@ -57,14 +62,14 @@ for d in a.datas:
         a.datas.remove(d)
         break
 
-# Add TOC to electrum_xuez, electrum_xuez_gui, electrum_xuez_plugins
+# Add TOC to electrum_dash, electrum_dash_gui, electrum_dash_plugins
 for p in sorted(a.pure):
     if p[0].startswith('lib') and p[2] == 'PYMODULE':
-        a.pure += [('electrum_xuez%s' % p[0][3:] , p[1], p[2])]
+        a.pure += [('electrum_dash%s' % p[0][3:] , p[1], p[2])]
     if p[0].startswith('gui') and p[2] == 'PYMODULE':
-        a.pure += [('electrum_xuez_gui%s' % p[0][3:] , p[1], p[2])]
+        a.pure += [('electrum_dash_gui%s' % p[0][3:] , p[1], p[2])]
     if p[0].startswith('plugins') and p[2] == 'PYMODULE':
-        a.pure += [('electrum_xuez_plugins%s' % p[0][7:] , p[1], p[2])]
+        a.pure += [('electrum_dash_plugins%s' % p[0][7:] , p[1], p[2])]
 
 pyz = PYZ(a.pure)
 
@@ -75,11 +80,11 @@ exe = EXE(pyz,
           strip=False,
           upx=False,
           console=False,
-          icon='icons/electrum-xuez.ico',
-          name=os.path.join('build/electrum-xuez/electrum-xuez', cmdline_name))
+          icon='icons/electrum-dash.ico',
+          name=os.path.join('build/electrum-dash/electrum-dash', cmdline_name))
 
 # trezorctl separate bin
-tctl_a = Analysis(['/usr/local/bin/trezorctl'],
+tctl_a = Analysis([os.path.join(PY36BINDIR, 'trezorctl')],
                   hiddenimports=['pkgutil'],
                   excludes=excludes,
                   runtime_hooks=['pyi_tctl_runtimehook.py'])
@@ -93,17 +98,17 @@ tctl_exe = EXE(tctl_pyz,
            strip=False,
            upx=False,
            console=True,
-           name=os.path.join('build/electrum-xuez/electrum-xuez', 'trezorctl.bin'))
+           name=os.path.join('build/electrum-dash/electrum-dash', 'trezorctl.bin'))
 
 coll = COLLECT(exe, tctl_exe,
                a.binaries,
                a.datas,
                strip=False,
                upx=False,
-               name=os.path.join('dist', 'electrum-xuez'))
+               name=os.path.join('dist', 'electrum-dash'))
 
 app = BUNDLE(coll,
-             name=os.path.join('dist', 'Electrum-XUEZ.app'),
-             appname="Electrum-XUEZ",
-	         icon='electrum-xuez.icns',
+             name=os.path.join('dist', 'Electrum-DASH.app'),
+             appname="Electrum-DASH",
+	         icon='electrum-dash.icns',
              version = 'ELECTRUM_VERSION')

@@ -23,7 +23,7 @@ def _new_load_module(name, file, pathname, description):
 imp.load_module = _new_load_module
 
 
-PLUGINS_PREFIX = 'electrum_xuez_plugins'
+PLUGINS_PREFIX = 'electrum_dash_plugins'
 
 KEYSTORE_PLUGINS = [
     'hw_wallet',
@@ -41,7 +41,7 @@ OTHER_PLUGINS= [
     'virtualkeyboard',
 ]
 
-OTHER_PLUGINS = map(lambda p: '%s.%s' % (PLUGINS_PREFIX, p), OTHER_PLUGINS)
+OTHER_PLUGINS = list(map(lambda p: '%s.%s' % (PLUGINS_PREFIX, p), OTHER_PLUGINS))
 
 PLUGINS = KEYSTORE_PLUGINS + OTHER_PLUGINS
 

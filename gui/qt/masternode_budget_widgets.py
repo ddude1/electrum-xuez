@@ -1,15 +1,16 @@
 import webbrowser
 
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
 
-from electrum_xuez.i18n import _
-from electrum_xuez.masternode_budget import BudgetProposal, BudgetVote
-from electrum_xuez.masternode_manager import BUDGET_FEE_CONFIRMATIONS
-from electrum_xuez.util import block_explorer_URL, print_error, format_satoshis_plain
+from electrum_dash.i18n import _
+from electrum_dash.masternode_budget import BudgetProposal, BudgetVote
+from electrum_dash.masternode_manager import BUDGET_FEE_CONFIRMATIONS
+from electrum_dash.util import block_explorer_URL, print_error, format_satoshis_plain
 
-from amountedit import BTCAmountEdit
-import util
+from .amountedit import BTCAmountEdit
+from . import util
 
 # Color used when displaying proposals that we created.
 MY_PROPOSAL_COLOR = '#80ff80'
@@ -19,7 +20,7 @@ MY_ADDRESS_COLOR = '#80ff80'
 def budget_explorer_url(item_type, identifier):
     """Get the URL for a budget proposal explorer."""
     if item_type == 'proposal':
-        return 'https://xuezwhale.org/p/%s' % identifier
+        return 'https://dashwhale.org/p/%s' % identifier
 
 class ProposalsModel(QAbstractTableModel):
     """Model of budget proposals."""
@@ -231,7 +232,7 @@ class ProposalsTab(QWidget):
         self.unsubmitted_proposals = []
 
         description = ''.join(['You can create a budget proposal below. ',
-                'Proposals require 5 XUEZ to create. ',
+                'Proposals require 5 DASH to create. ',
                 'Your proposal can be submitted once the collateral transaction has enough confirmations.'])
         description = QLabel(_(description))
         description.setWordWrap(True)
@@ -264,7 +265,7 @@ class ProposalsTab(QWidget):
         form.addRow(_('Number of Payments:'), self.payments_count_edit)
         form.addRow(_('Starting Block:'), self.start_block_edit)
         form.addRow(_('Payment Address:'), self.address_edit)
-        form.addRow(_('Monthly XUEZ Payment:'), self.amount_edit)
+        form.addRow(_('Monthly DASH Payment:'), self.amount_edit)
 
         vbox = QVBoxLayout()
         vbox.addWidget(self.tree)
@@ -291,8 +292,8 @@ class ProposalsTab(QWidget):
         self.unsubmitted_proposals = []
         for p in self.parent.masternode_manager.proposals:
             if p.fee_txid and not p.submitted and not p.rejected:
-                confirmations, timestamp = self.parent.wallet.get_confirmations(p.fee_txid)
-                if confirmations < BUDGET_FEE_CONFIRMATIONS:
+                height, conf, timestamp = self.wallet.get_tx_height(p.fee_txid)
+                if conf < BUDGET_FEE_CONFIRMATIONS:
                     continue
 
                 item = (p.proposal_name, p.fee_txid)
@@ -333,7 +334,7 @@ class ProposalsTab(QWidget):
             return QMessageBox.critical(self, _('Error'), _(str(e)))
 
         pw = None
-        if manager.wallet.use_encryption:
+        if manager.wallet.has_password():
             pw = self.parent.password_dialog(msg=_('Please enter your password to create a budget proposal.'))
             if pw is None:
                 return
