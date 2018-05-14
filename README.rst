@@ -1,4 +1,4 @@
-Electrum-DASH - Lightweight Dashpay client
+Electrum-XUEZ - Lightweight Xuezpay client
 =====================================
 
 ::
