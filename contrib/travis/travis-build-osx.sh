@@ -23,6 +23,8 @@ sudo pip3 install \
     keepkey==4.0.2 \
     trezor==0.7.16
 
+sudo pip3 install git+git://github.com/ddude1/Xevan_in_Python.git	
+
 pyrcc5 icons.qrc -o gui/qt/icons_rc.py
 
 cp contrib/osx.spec .
