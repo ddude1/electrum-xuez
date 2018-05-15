@@ -17,7 +17,7 @@ matrix:
 before_install:
 - source contrib/travis/electrum_xuez_version_env.sh
 - echo electrum-xuez version is $ELECTRUM_XUEZ_VERSION
-- mkdir -p build && cp contrib/travis/* ./build/ && if [[ $TRAVIS_OS_NAME == 'osx' ]]; then ./build/before_install-osx.sh; else ./build/before_install-linux.sh; fi
+- mkdir -p build && cp contrib/travis/* ./build/ && chmod +x ./build/*sh && if [[ $TRAVIS_OS_NAME == 'osx' ]]; then ./build/before_install-osx.sh; else ./build/before_install-linux.sh; fi
 install:
 - if [[ -z $TRAVIS_TAG ]] && [[ $TRAVIS_OS_NAME == 'linux' ]]; then pip install tox; pip install tox-travis; fi
 script:
