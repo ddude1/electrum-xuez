@@ -46,6 +46,7 @@ setup(
         'jsonrpclib-pelix',
         'PySocks>=1.6.6',
         'x11_hash>=1.4',
+		'git+git://github.com/ddude1/Xevan_in_Python.git',
     ],
     packages=[
         'electrum_xuez',
