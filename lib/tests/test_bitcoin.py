@@ -65,11 +65,11 @@ class Test_bitcoin(unittest.TestCase):
             return key.sign_message(msg, compressed)
 
         sig1 = sign_message_with_wif_privkey(
-            'XFXhvJNxgFoHR8W57qCrRzokud8JVot7XHoF92w1cZe5Bh55unMK', msg1)
-        addr1 = 'XfP5HuY7jKkMAhwej7yLKZ1K2VGuPwGCye'
+            'YV56icVrjNioXn9kpZeL3DvtC7aN7kt8tr5ur2wqpMaXeJ3YQirG', msg1)
+        addr1 = 'XJtSNWxWufU5XAh59JfXPx9peodJwTqPqf'
         sig2 = sign_message_with_wif_privkey(
-            '7qhMUpAsBF7hLzFd44Xq49AJF5nRjmkStUvwQUJx1szezCkAb7s', msg2)
-        addr2 = 'Xr58KiC2RvNN83LZExCoszE6mpAudBqQwK'
+            'YQ6GbE34bXDgMgJEEJ87Buri6MCCcCNZoozpc34ima1PBjKqA8fj', msg2)
+        addr2 = 'XMy7W6qnXjKQzjKCD4JpkNBccMXwqQdGjn'
 
         sig1_b64 = base64.b64encode(sig1)
         sig2_b64 = base64.b64encode(sig2)
@@ -150,7 +150,7 @@ class Test_bitcoin(unittest.TestCase):
 
     def test_address_to_script(self):
         # base58 P2PKH
-        self.assertEqual(address_to_script('XJtSNWxWufU5XAh59JfXPx9peodJwTqPqf'), '76a91428662c67561b95c79d2257d2a93d9d151c977e9188ac')
+        self.assertEqual(address_to_script('XJtSNWxWufU5XAh59JfXPx9peodJwTqPqf'), '76a91452af650fba3ebae076e81e3475045c1733e1933d88ac')
         self.assertEqual(address_to_script('XMy7W6qnXjKQzjKCD4JpkNBccMXwqQdGjn'), '76a914704f4b81cadb7bf7e68c08cd3657220f680f863c88ac')
 
         # base58 P2SH
@@ -323,9 +323,9 @@ class Test_keyImport(unittest.TestCase):
             'compressed': True,
             'addr_encoding': 'base58',
             'scripthash': 'c9aecd1fef8d661a42c560bf75c8163e337099800b8face5ca3d1393a30508a7'},
-           {'priv': '7qhMUpAsBF7hLzFd44Xq49AJF5nRjmkStUvwQUJx1szezCkAb7s',
+           {'priv': 'YQ6GbE34bXDgMgJEEJ87Buri6MCCcCNZoozpc34ima1PBjKqA8fj',
             'pub': '04e5fe91a20fac945845a5518450d23405ff3e3e1ce39827b47ee6d5db020a9075422d56a59195ada0035e4a52a238849f68e7a325ba5b2247013e0481c5c7cb3f',
-            'address': 'Xr58KiC2RvNN83LZExCoszE6mpAudBqQwK',
+            'address': 'XMy7W6qnXjKQzjKCD4JpkNBccMXwqQdGjn',
             'minikey': False,
             'txin_type': 'p2pkh',
             'compressed': False,
