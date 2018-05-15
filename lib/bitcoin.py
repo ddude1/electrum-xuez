@@ -31,7 +31,7 @@ import json
 
 import ecdsa
 import pyaes
-import x11_hash
+import xevan_hash
 
 from .util import bfh, bh2u, to_string
 from . import version
@@ -52,10 +52,10 @@ def read_json_dict(filename):
 # Version numbers for BIP32 extended keys
 # standard: xprv, xpub
 XPRV_HEADERS = {
-    'standard': 0x0488ade4,
+    'standard': 0x0221312b,
 }
 XPUB_HEADERS = {
-    'standard': 0x0488b21e,
+    'standard': 0x022d2533,
 }
 
 
@@ -64,26 +64,26 @@ class NetworkConstants:
     @classmethod
     def set_mainnet(cls):
         cls.TESTNET = False
-        cls.WIF_PREFIX = 204
-        cls.ADDRTYPE_P2PKH = 76
-        cls.ADDRTYPE_P2SH = 16
+        cls.WIF_PREFIX = 212
+        cls.ADDRTYPE_P2PKH = 75
+        cls.ADDRTYPE_P2SH = 18
         cls.HEADERS_URL = ''  # TODO headers bootstrap
-        cls.GENESIS = '00000ffd590b1485b3caadc19b22e6379c733355108f107a430458cdf3407ab6'
+        cls.GENESIS = '000000e1febc39965b055e8e0117179a4d18e24e7aaa0c69864c4054b4f29445'
         cls.DEFAULT_PORTS = {'t': '50001', 's': '50002'}
         cls.DEFAULT_SERVERS = read_json_dict('servers.json')
         cls.DRKV_HEADER = 0x02fe52f8  # drkv
         cls.DRKP_HEADER = 0x02fe52cc  # drkp
-        XPRV_HEADERS['standard'] = 0x0488ade4
-        XPUB_HEADERS['standard'] = 0x0488b21e
+        XPRV_HEADERS['standard'] = 0x0221312b
+        XPUB_HEADERS['standard'] = 0x022d2533
 
     @classmethod
     def set_testnet(cls):
         cls.TESTNET = True
         cls.WIF_PREFIX = 239
-        cls.ADDRTYPE_P2PKH = 140
+        cls.ADDRTYPE_P2PKH = 139
         cls.ADDRTYPE_P2SH = 19
         cls.HEADERS_URL = ''  # TODO headers bootstrap
-        cls.GENESIS = '00000bafbc94add76cb75e2ec92894837288a481e5c005f6563d91623bf8bc2c'
+        cls.GENESIS = '000000e1febc39965b055e8e0117179a4d18e24e7aaa0c69864c4054b4f29445'
         cls.DEFAULT_PORTS = {'t':'51001', 's':'51002'}
         cls.DEFAULT_SERVERS = read_json_dict('servers_testnet.json')
         cls.DRKV_HEADER = 0x3a8061a0  # DRKV
@@ -244,7 +244,7 @@ def Hash(x):
 
 
 def PoWHash(x):
-    return x11_hash.getPoWHash(to_bytes(x))
+    return xevan_hash.getPoWHash(to_bytes(x))
 
 
 hash_encode = lambda x: bh2u(x[::-1])

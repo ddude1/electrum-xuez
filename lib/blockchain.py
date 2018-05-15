@@ -29,7 +29,7 @@ from .bitcoin import *
 
 
 target_timespan = 24 * 60 * 60 # Xuez: 1 day
-target_spacing = 2.5 * 60 # Xuez: 2.5 minutes
+target_spacing = 1 * 60 # Xuez: 1 minute
 interval = target_timespan / target_spacing # 576
 max_target = 0x00000ffff0000000000000000000000000000000000000000000000000000000
 
