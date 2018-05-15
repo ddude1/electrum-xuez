@@ -255,15 +255,15 @@ class Test_drk_import(unittest.TestCase):
     """ The keys used in this class are TEST keys from
         https://en.bitcoin.it/wiki/BIP_0032_TestVectors"""
 
-    xpub = 'ToEA6qpu6F7tMbkhs81LYpv1AE65hGb34J2DRjTXZ9gS22UVDP3KTZrBmjkFJsESg8gkUSvb21c1aR6y14XQCjmKWrFmzrkMhANJqxP3GenZSJd'
-    xprv = 'TDt9EZSrSEZyJVGtRKog7FzuoLao9aHdKRGfjqFKzXcs1tpeBJGNqMmP2PUrnyLHLUeykytcPuchZUNneTZJMTS9ndsWpka56fiz6pkRRSQnTkR'
+    xpub = 'ToEA6ij48MPyPqZFPKUuaP3iqKHBWU9f97gBPqtXv9WBwKSn2nwXPomtuwLLmwipDzVghkWisV2GAZhEqCRXc9FBijvWxB7yap1gTzmSp65t87m'
+    xprv = 'TDt9EapLfhkwakQMYqiaME1AzA41fYs6HZFxUWp8tSkLHUiovTvsguxHykeiimKJUR7WTs5Z7YY7kUBeWmjR3UYc7VT5Pd6gvQKeL7zQdRNc3Tt'
     drkp = 'drkpRv3MKBiuEwFtNSzj62Kwpj7Cd77NVUYAPoxBN8EL5rSn6EMWr3bD4RnwwbGrnQZStpYJ1iGZCiGKt9mR7aYNtaurGyTCQZuwVzqzAbX9znj'
     drkv = 'drkvjLuVs1zJu2rKwexyhS5mYeVuNs2umm4bZMg8hv4Zy28xLX2tXbr6tzytFNsAsqjveLoFqSgcNhF4YoonH1y35REUMeSFJZ8ALdoFutwvbtw'
-    master_fpr = '57fbf971'
-    sec_key = 'edb2e14f9ee77d26dd93b4ecede8d16ed408ce149b6cd80b0715a2d911a0afea'
-    pub_key = '035a784662a4a20a65bf6aab9ae98a6c068a81c52e4b032c0fb5400c706cfccc56'
-    child_num = '80000000'
-    chain_code = '47fdacbd0f1097043b78c63c20c34ef4ed9a111d980047ad16282c7ae6236141'
+    master_fpr = '126fe05a'
+    sec_key = 'ebf0405dc620034fb0ef3eb00e83ca8e28314b8e22a3a06dc4e19e6f272a1e83'
+    pub_key = '038908c4bf9bc7ba596ba88dfb2594ec22c95d866d19f4c8926827beee3c8795e5'
+    child_num = '00000001'
+    chain_code = '20976ef740cddc7ae060121088567c940a4ef34cc690c67ab9f1bf9e8a4d5320'
     xtype = 'standard'
 
     def check_deserialized(self, deserialized, prv):
