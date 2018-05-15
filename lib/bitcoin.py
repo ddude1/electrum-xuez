@@ -80,7 +80,7 @@ class NetworkConstants:
     def set_testnet(cls):
         cls.TESTNET = True
         cls.WIF_PREFIX = 239
-        cls.ADDRTYPE_P2PKH = 139
+        cls.ADDRTYPE_P2PKH = 140
         cls.ADDRTYPE_P2SH = 19
         cls.HEADERS_URL = ''  # TODO headers bootstrap
         cls.GENESIS = '000000e1febc39965b055e8e0117179a4d18e24e7aaa0c69864c4054b4f29445'
