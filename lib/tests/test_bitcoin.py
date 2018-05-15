@@ -154,7 +154,7 @@ class Test_bitcoin(unittest.TestCase):
         self.assertEqual(address_to_script('XMy7W6qnXjKQzjKCD4JpkNBccMXwqQdGjn'), '76a914747a19c67e086c3426821cd4bfd011e44e5a8e8788ac')
 
         # base58 P2SH
-        self.assertEqual(address_to_script('8WHUEVtMDLeereT5r4ZoNKjr3MXr4gqfon'), 'a9142a84cf00d47f699ee7bbc1dea5ec1bdecb4ac15487')
+        self.assertEqual(address_to_script('8WHUEVtMDLeereT5r4ZoNKjr3MXr4gqfon'), 'a914a6bc1aa409ab5f2e895aa28f3cadb30dc623728e87')
         self.assertEqual(address_to_script('8phNpVKta6kkbP24HfvvQVeHEmgBQYiJCB'), 'a914f47c8954e421031ad04ecd8e7752c9479206b9d387')
 
 
@@ -322,7 +322,7 @@ class Test_keyImport(unittest.TestCase):
             'txin_type': 'p2pkh',
             'compressed': True,
             'addr_encoding': 'base58',
-            'scripthash': 'c9aecd1fef8d661a42c560bf75c8163e337099800b8face5ca3d1393a30508a7'},
+            'scripthash': '557041e6ceca2cff492d60f035ae3db4408ae6aa50840d932b95858b772f6133'},
            {'priv': 'YQ6GbE34bXDgMgJEEJ87Buri6MCCcCNZoozpc34ima1PBjKqA8fj',
             'pub': '03fa334250ddb2a51b30b31a98922a5e1c107042a482b68fc74999c6962ae3276e',
             'address': 'XMy7W6qnXjKQzjKCD4JpkNBccMXwqQdGjn',
