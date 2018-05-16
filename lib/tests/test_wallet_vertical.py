@@ -75,7 +75,7 @@ class TestWalletKeystoreAddressIntegrity(unittest.TestCase):
         w = self._create_standard_wallet(ks)
 
         self.assertEqual(w.get_receiving_addresses()[0], 'XReU5KVKwv7KLNUwaokkQX3JBFajsfqF6R')
-        self.assertEqual(w.get_change_addresses()[0], 'Xu7Ly4vzExW9r4ijM79KWm1icCTTBoVCFE')
+        self.assertEqual(w.get_change_addresses()[0], 'XVmjyxdhXn3H2daeKgp12djvyhCWX9kF24')
 
     @mock.patch.object(storage.WalletStorage, '_write')
     def test_bip39_seed_bip44_standard(self, mock_write):
