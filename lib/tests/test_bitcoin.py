@@ -255,15 +255,15 @@ class Test_drk_import(unittest.TestCase):
     """ The keys used in this class are TEST keys from
         https://en.bitcoin.it/wiki/BIP_0032_TestVectors"""
 
-    xpub = 'ToEA6ij48MPyPqZFPKUuaP3iqKHBWU9f97gBPqtXv9WBwKSn2nwXPomtuwLLmwipDzVghkWisV2GAZhEqCRXc9FBijvWxB7yap1gTzmSp65t87m'
+    xpub = 'ToEA6h6LXp1wxQy3ZgudmAqx1GzyXgsNLdahv9HADJhrP1MjVmKKLpeRT3g72cghZGJeDCo5yrmYVwSooauGqA7rCtedLRy6VuptftQMVd9h3VM'
     xprv = 'TDt9EapLfhkwakQMYqiaME1AzA41fYs6HZFxUWp8tSkLHUiovTvsguxHykeiimKJUR7WTs5Z7YY7kUBeWmjR3UYc7VT5Pd6gvQKeL7zQdRNc3Tt'
     drkp = 'drkpRv3MKBiuEwFtNSzj62Kwpj7Cd77NVUYAPoxBN8EL5rSn6EMWr3bD4RnwwbGrnQZStpYJ1iGZCiGKt9mR7aYNtaurGyTCQZuwVzqzAbX9znj'
     drkv = 'drkvjLuVs1zJu2rKwexyhS5mYeVuNs2umm4bZMg8hv4Zy28xLX2tXbr6tzytFNsAsqjveLoFqSgcNhF4YoonH1y35REUMeSFJZ8ALdoFutwvbtw'
     master_fpr = '3442193e'
     sec_key = 'ebf0405dc620034fb0ef3eb00e83ca8e28314b8e22a3a06dc4e19e6f272a1e83'
     pub_key = '038908c4bf9bc7ba596ba88dfb2594ec22c95d866d19f4c8926827beee3c8795e5'
-    child_num = '00000001'
-    chain_code = '20976ef740cddc7ae060121088567c940a4ef34cc690c67ab9f1bf9e8a4d5320'
+    child_num = '80000000'
+    chain_code = '47fdacbd0f1097043b78c63c20c34ef4ed9a111d980047ad16282c7ae6236141'
     xtype = 'standard'
 
     def check_deserialized(self, deserialized, prv):
@@ -325,7 +325,7 @@ class Test_keyImport(unittest.TestCase):
             'scripthash': '557041e6ceca2cff492d60f035ae3db4408ae6aa50840d932b95858b772f6133'},
            {'priv': 'YQ6GbE34bXDgMgJEEJ87Buri6MCCcCNZoozpc34ima1PBjKqA8fj',
             'pub': '03fa334250ddb2a51b30b31a98922a5e1c107042a482b68fc74999c6962ae3276e',
-            'address': 'XMy7W6qnXjKQzjKCD4JpkNBccMXwqQdGjn',
+            'address': 'XZ4wxQ5pEJdD92qco9HNfo9A732jyMLvUE', #compressed XMy7W6qnXjKQzjKCD4JpkNBccMXwqQdGjn
             'minikey': False,
             'txin_type': 'p2pkh',
             'compressed': False,
