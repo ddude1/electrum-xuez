@@ -2036,7 +2036,6 @@ wrestle
 wrist
 write
 wrong
-xuez
 yard
 year
 yellow
