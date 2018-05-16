@@ -85,8 +85,8 @@ class TestMasternode(unittest.TestCase):
         self.assertEqual(expected, msg)
 
     def test_create_and_sign(self):
-        collateral_pub = '038ae57bd0fa5b45640e771614ec571c7326a2266c78bb444f1971c85188411ba1' # XahPxwmCuKjPq69hzVxP18V1eASwDWbUrn
-        delegate_pub = '02526201c87c1b4630aabbd04572eec3e2545e442503e57e60880fafcc1f684dbc' # Xx2nSdhaT7c9SREKBPAgzpkhu518XFgkgh
+        collateral_pub = '02c59b76fabcfc146c75365da6475f33d8fa596ef76b4b301d66da74180c429c78' # XJtSNWxWufU5XAh59JfXPx9peodJwTqPqf
+        delegate_pub = '03fa334250ddb2a51b30b31a98922a5e1c107042a482b68fc74999c6962ae3276e' # XMy7W6qnXjKQzjKCD4JpkNBccMXwqQdGjn
         protocol_version = 70103
 
         ip = '0.0.0.0'
@@ -100,12 +100,12 @@ class TestMasternode(unittest.TestCase):
         announce = MasternodeAnnounce(vin=vin, addr=addr, collateral_key=collateral_pub, delegate_key=delegate_pub,
                 protocol_version=protocol_version, last_ping=last_ping)
 
-        collateral_wif = 'XJqCcyfnLYK4Y7ZDVjLrgPnsrq2cWMF6MX9cyhKgfMajwqrCwZaS'
-        delegate_wif = 'XCbhXBc2N9q8kxqBF41rSuLWVpVVbDm7P1oPv9GxcrS9QXYBWZkB'
+        collateral_wif = 'YV56icVrjNioXn9kpZeL3DvtC7aN7kt8tr5ur2wqpMaXeJ3YQirG'
+        delegate_wif = 'YQ6GbE34bXDgMgJEEJ87Buri6MCCcCNZoozpc34ima1PBjKqA8fj'
         announce.last_ping.sign(delegate_wif, bfh(delegate_pub), 1461858375)
         sig = announce.sign(collateral_wif, 1461858375)
 
-        address = 'XahPxwmCuKjPq69hzVxP18V1eASwDWbUrn'
+        address = 'XJtSNWxWufU5XAh59JfXPx9peodJwTqPqf'
         self.assertTrue(announce.verify(address))
         self.assertTrue(bitcoin.verify_message(address, sig, announce.serialize_for_sig()))
         # DEBUG information. Uncomment to see serialization.
@@ -133,7 +133,7 @@ class TestMasternodePing(unittest.TestCase):
         ping = MasternodePing(vin=vin, block_hash=block_hash, sig_time=current_time)
 
         expected_sig = 'H6k0M7G15GLnJ7i7Zcs8uCHcVRsn1P0hKK4lVMkgY4byaOvUECCsfxA9ktUiFT8scfFYYb/sxkcD8ifU/SEnBUg='
-        wif = 'XCbhXBc2N9q8kxqBF41rSuLWVpVVbDm7P1oPv9GxcrS9QXYBWZkB'
+        wif = 'YV56icVrjNioXn9kpZeL3DvtC7aN7kt8tr5ur2wqpMaXeJ3YQirG'
         sig = ping.sign(wif, current_time = current_time)
         address = bitcoin.address_from_private_key(wif)
         self.assertTrue(bitcoin.verify_message(address, sig, ping.serialize_for_sig()))
