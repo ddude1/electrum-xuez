@@ -256,12 +256,12 @@ class Test_drk_import(unittest.TestCase):
         https://en.bitcoin.it/wiki/BIP_0032_TestVectors"""
 
     xpub = 'ToEA6h6LXp1wxQy3ZgudmAqx1GzyXgsNLdahv9HADJhrP1MjVmKKLpeRT3g72cghZGJeDCo5yrmYVwSooauGqA7rCtedLRy6VuptftQMVd9h3VM'
-    xprv = 'TDt9EapLfhkwakQMYqiaME1AzA41fYs6HZFxUWp8tSkLHUiovTvsguxHykeiimKJUR7WTs5Z7YY7kUBeWmjR3UYc7VT5Pd6gvQKeL7zQdRNc3Tt'
+    xprv = 'TDt9EZBd5ANv9Kp9jD9JY1oQA7mogmaoV5AUzpCmBbwzjAdmPSJfdvppWrzUySeUCHF5ANRUAPCqR18ZxxUfDey9dtPhP23NoYcTi2cPNoMUB6w'
     drkp = 'drkpRv3MKBiuEwFtNSzj62Kwpj7Cd77NVUYAPoxBN8EL5rSn6EMWr3bD4RnwwbGrnQZStpYJ1iGZCiGKt9mR7aYNtaurGyTCQZuwVzqzAbX9znj'
     drkv = 'drkvjLuVs1zJu2rKwexyhS5mYeVuNs2umm4bZMg8hv4Zy28xLX2tXbr6tzytFNsAsqjveLoFqSgcNhF4YoonH1y35REUMeSFJZ8ALdoFutwvbtw'
     master_fpr = '3442193e'
-    sec_key = 'ebf0405dc620034fb0ef3eb00e83ca8e28314b8e22a3a06dc4e19e6f272a1e83'
-    pub_key = '038908c4bf9bc7ba596ba88dfb2594ec22c95d866d19f4c8926827beee3c8795e5'
+    sec_key = 'edb2e14f9ee77d26dd93b4ecede8d16ed408ce149b6cd80b0715a2d911a0afea'
+    pub_key = '035a784662a4a20a65bf6aab9ae98a6c068a81c52e4b032c0fb5400c706cfccc56'
     child_num = '80000000'
     chain_code = '47fdacbd0f1097043b78c63c20c34ef4ed9a111d980047ad16282c7ae6236141'
     xtype = 'standard'
@@ -325,10 +325,10 @@ class Test_keyImport(unittest.TestCase):
             'scripthash': '557041e6ceca2cff492d60f035ae3db4408ae6aa50840d932b95858b772f6133'},
            {'priv': 'YQ6GbE34bXDgMgJEEJ87Buri6MCCcCNZoozpc34ima1PBjKqA8fj',
             'pub': '03fa334250ddb2a51b30b31a98922a5e1c107042a482b68fc74999c6962ae3276e',
-            'address': 'XZ4wxQ5pEJdD92qco9HNfo9A732jyMLvUE', #compressed XMy7W6qnXjKQzjKCD4JpkNBccMXwqQdGjn
+            'address': 'XMy7W6qnXjKQzjKCD4JpkNBccMXwqQdGjn', #compressed XMy7W6qnXjKQzjKCD4JpkNBccMXwqQdGjn
             'minikey': False,
             'txin_type': 'p2pkh',
-            'compressed': False,
+            'compressed': True,
             'addr_encoding': 'base58',
             'scripthash': '722ac34d1d99241e7ff7aabbb27dcc1cde381c1bfce272683160c38bc798e5b5'}, #76a914747a19c67e086c3426821cd4bfd011e44e5a8e8788ac
            # from http://bitscan.com/articles/security/spotlight-on-mini-private-keys
