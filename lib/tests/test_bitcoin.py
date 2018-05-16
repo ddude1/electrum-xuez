@@ -334,7 +334,7 @@ class Test_keyImport(unittest.TestCase):
            # from http://bitscan.com/articles/security/spotlight-on-mini-private-keys
            {'priv': 'SzavMBLoXU6kDrqtUVmffv',
             'pub': '02588d202afcc1ee4ab5254c7847ec25b9a135bbda0f2bc69ee1a714749fd77dc9',
-            'address': 'XixkkUaFKBmj5mieoLRNXTUiXhCmM87ZSj',
+            'address': 'XKd9mNGxc1JrGLaZmv643LCvuBwpeKJjuA',
             'minikey': True,
             'txin_type': 'p2pkh',
             'compressed': True,  # this is actually ambiguous... issue #2748
