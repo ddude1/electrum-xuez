@@ -185,7 +185,7 @@ class Test_xprv_xpub(unittest.TestCase):
     xprv_xpub = (
         # Taken from test vectors in https://en.bitcoin.it/wiki/BIP_0032_TestVectors
         {'xprv': 'TDt9EZSrSEZyJVGtRKog7FzuoLao9aHdKRGfjqFKzXcs1tpeBJGNqMmP2PUrnyLHLUeykytcPuchZUNneTZJMTS9ndsWpka56fiz6pkRRSQnTkR',
-         'xpub': 'ToEA6qpu6F7tMbkhs81LYpv1AE65hGb34J2DRjTXZ9gS22UVDP3KTZrBmjkFJsESg8gkUSvb21c1aR6y14XQCjmKWrFmzrkMhANJqxP3GenZSJd',
+         'xpub': 'ToEA6hMZttD17aRnFoa1LR3TeVoxzVaCAygtfAKj2ENifjYcHdH2YFayxaAUr7RSZQFdoMWsXQjTZumJTXMRQk4nKCvZvfaM7Bb22tRv5sg3ESr',
          'xtype': 'standard'},
     )
 
@@ -212,7 +212,7 @@ class Test_xprv_xpub(unittest.TestCase):
         self.assertEqual("TDt9EhvBdbUrYWbp2eF1KfsTK4rurMJUCjbzWQP8XSvaNBkX742fkg2aqZ4dFiEp9247o7jVxwxhfyuAoTeTfWEPrVZNz9QyhECgRQhVo1R47Ej", xprv)
 
         xpub, xprv = self._do_test_bip32("fffcf9f6f3f0edeae7e4e1dedbd8d5d2cfccc9c6c3c0bdbab7b4b1aeaba8a5a29f9c999693908d8a8784817e7b7875726f6c696663605d5a5754514e4b484542","m/0/2147483647'/1/2147483646'/2")
-        self.assertEqual("xpub6FnCn6nSzZAw5Tw7cgR9bi15UV96gLZhjDstkXXxvCLsUXBGXPdSnLFbdpq8p9HmGsApME5hQTZ3emM2rnY5agb9rXpVGyy3bdW6EEgAtqt", xpub)
+        self.assertEqual("ToEA6pbmLqZm2HRPEfBMk1WvRni6r6JaJ8ULZkJXQvi1tnNwm7FRri38ihYcL9ouBqx3B4USTRPzS7oDbgSJ6FiXdcKhKD5TPNe5wVGtC3N27Jk", xpub)
         self.assertEqual("xprvA2nrNbFZABcdryreWet9Ea4LvTJcGsqrMzxHx98MMrotbir7yrKCEXw7nadnHM8Dq38EGfSh6dqA9QWTyefMLEcBYJUuekgW4BYPJcr9E7j", xprv)
 
     def test_xpub_from_xprv(self):
@@ -226,7 +226,7 @@ class Test_xprv_xpub(unittest.TestCase):
             xpub = xprv_details['xpub']
             self.assertTrue(is_xpub(xpub))
         self.assertFalse(is_xpub('xpub1nval1d'))
-        self.assertFalse(is_xpub('xpub661MyMwAqRbcFWohJWt7PHsFEJfZAvw9ZxwQoDa4SoMgsDDM1T7WK3u9E4edkC4ugRnZ8E4xDZRpk8Rnts3Nbt97dPwT52WRONGBADWRONG'))
+        self.assertFalse(is_xpub('ToEA6qpu6F7tMbkhs81LYpv1AE65hGb34J2DRjTXZ9gS22UVDP3KTZrBmjkFJsESg8gkUSvb21c1aR6y14XQCjmKWrFmzrkMhANJqxP3GeWRONG'))
 
     def test_xpub_type(self):
         for xprv_details in self.xprv_xpub:
@@ -238,7 +238,7 @@ class Test_xprv_xpub(unittest.TestCase):
             xprv = xprv_details['xprv']
             self.assertTrue(is_xprv(xprv))
         self.assertFalse(is_xprv('xprv1nval1d'))
-        self.assertFalse(is_xprv('xprv661MyMwAqRbcFWohJWt7PHsFEJfZAvw9ZxwQoDa4SoMgsDDM1T7WK3u9E4edkC4ugRnZ8E4xDZRpk8Rnts3Nbt97dPwT52WRONGBADWRONG'))
+        self.assertFalse(is_xprv('TDt9EhvBdbUrYWbp2eF1KfsTK4rurMJUCjbzWQP8XSvaNBkX742fkg2aqZ4dFiEp9247o7jVxwxhfyuAoTeTfWEPrVZNz9QyhECgRQhVo1WRONG'))
 
     def test_is_bip32_derivation(self):
         self.assertTrue(is_bip32_derivation("m/0'/1"))
