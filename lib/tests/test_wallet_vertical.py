@@ -53,7 +53,7 @@ class TestWalletKeystoreAddressIntegrity(unittest.TestCase):
         self._check_seeded_keystore_sanity(ks)
         self.assertTrue(isinstance(ks, keystore.BIP32_KeyStore))
 
-        self.assertEqual(ks.xpub, 'ToEA6epvY6iUs9r4RZUe2Ng5EvEVMEztmfxnJHNDie3uhb373XD7gD7c5HGcfFZX5mCxnMGM3knhJJVdD2YHgxAs6Ztc2VJYwU6aD1x5CsoH2Qf')
+        self.assertEqual(ks.xpub, 'ToEA6epvY6iUs9r4Qi3wRqytDNaGbuq2niqnQVN3Tck7RPPm9oHWLmXCFRC9vPdQ7tjBad6BERPFFDfzh3X48LDpeosf65CRBQsyXUzJpcpNygU')
 
         w = self._create_standard_wallet(ks)
 
