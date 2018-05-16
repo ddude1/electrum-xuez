@@ -213,7 +213,7 @@ class Test_xprv_xpub(unittest.TestCase):
 
         xpub, xprv = self._do_test_bip32("fffcf9f6f3f0edeae7e4e1dedbd8d5d2cfccc9c6c3c0bdbab7b4b1aeaba8a5a29f9c999693908d8a8784817e7b7875726f6c696663605d5a5754514e4b484542","m/0/2147483647'/1/2147483646'/2")
         self.assertEqual("ToEA6pbmLqZm2HRPEfBMk1WvRni6r6JaJ8ULZkJXQvi1tnNwm7FRri38ihYcL9ouBqx3B4USTRPzS7oDbgSJ6FiXdcKhKD5TPNe5wVGtC3N27Jk", xpub)
-        self.assertEqual("xprvA2nrNbFZABcdryreWet9Ea4LvTJcGsqrMzxHx98MMrotbir7yrKCEXw7nadnHM8Dq38EGfSh6dqA9QWTyefMLEcBYJUuekgW4BYPJcr9E7j", xprv)
+        self.assertEqual("TDt9Egh3tBvjDCGVQBR2WrUNadUw1B21Sa47eRE8PDxAEweyenEn9pDXnWrzH1Rz9YfZu6M3ZGRz2wLcJrJgCHywi1U5y2fVuer31Dcf4Mqgck3", xprv)
 
     def test_xpub_from_xprv(self):
         """We can derive the xpub key from a xprv."""
@@ -259,7 +259,7 @@ class Test_drk_import(unittest.TestCase):
     xprv = 'TDt9EapLfhkwakQMYqiaME1AzA41fYs6HZFxUWp8tSkLHUiovTvsguxHykeiimKJUR7WTs5Z7YY7kUBeWmjR3UYc7VT5Pd6gvQKeL7zQdRNc3Tt'
     drkp = 'drkpRv3MKBiuEwFtNSzj62Kwpj7Cd77NVUYAPoxBN8EL5rSn6EMWr3bD4RnwwbGrnQZStpYJ1iGZCiGKt9mR7aYNtaurGyTCQZuwVzqzAbX9znj'
     drkv = 'drkvjLuVs1zJu2rKwexyhS5mYeVuNs2umm4bZMg8hv4Zy28xLX2tXbr6tzytFNsAsqjveLoFqSgcNhF4YoonH1y35REUMeSFJZ8ALdoFutwvbtw'
-    master_fpr = '126fe05a'
+    master_fpr = '3442193e'
     sec_key = 'ebf0405dc620034fb0ef3eb00e83ca8e28314b8e22a3a06dc4e19e6f272a1e83'
     pub_key = '038908c4bf9bc7ba596ba88dfb2594ec22c95d866d19f4c8926827beee3c8795e5'
     child_num = '00000001'
@@ -330,7 +330,7 @@ class Test_keyImport(unittest.TestCase):
             'txin_type': 'p2pkh',
             'compressed': False,
             'addr_encoding': 'base58',
-            'scripthash': 'f5914651408417e1166f725a5829ff9576d0dbf05237055bf13abd2af7f79473'},
+            'scripthash': '722ac34d1d99241e7ff7aabbb27dcc1cde381c1bfce272683160c38bc798e5b5'}, #76a914747a19c67e086c3426821cd4bfd011e44e5a8e8788ac
            # from http://bitscan.com/articles/security/spotlight-on-mini-private-keys
            {'priv': 'SzavMBLoXU6kDrqtUVmffv',
             'pub': '02588d202afcc1ee4ab5254c7847ec25b9a135bbda0f2bc69ee1a714749fd77dc9',
