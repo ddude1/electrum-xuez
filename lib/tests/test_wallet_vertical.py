@@ -86,7 +86,7 @@ class TestWalletKeystoreAddressIntegrity(unittest.TestCase):
 
         self.assertTrue(isinstance(ks, keystore.BIP32_KeyStore))
 
-        self.assertEqual(ks.xpub, 'xpub6DFh1smUsyqmYD4obDX6ngaxhd53Zx7aeFjoobebm7vbkT6f9awJWFuGzBT9FQJEWFBL7UyhMXtYzRcwDuVbcxtv9Ce2W9eMm4KXLdvdbjv')
+        self.assertEqual(ks.xpub, 'ToEA6n5FacYnui6DhQK3iYcscmHz5EEXBk2DUnASTzpejhxg33ApUuLzSdCHgWRud6xWQSUxDgHzPC8iwLiCTNg3ftdTbstzcYKQ6v6KJMqfQG1')
 
         w = self._create_standard_wallet(ks)
 
@@ -103,7 +103,7 @@ class TestWalletKeystoreAddressIntegrity(unittest.TestCase):
         self.assertTrue(isinstance(ks1, keystore.BIP32_KeyStore))
         self.assertEqual(ks1.xpub, 'ToEA6epvY6iUs9r4RZUe2Ng5EvEVMEztmfxnJHNDie3uhb373XD7gD7c5HGcfFZX5mCxnMGM3knhJJVdD2YHgxAs6Ztc2VJYwU6aD1x5CsoH2Qf')
 
-        ks2 = keystore.from_xpub('xpub661MyMwAqRbcGfCPEkkyo5WmcrhTq8mi3xuBS7VEZ3LYvsgY1cCFDbenT33bdD12axvrmXhuX3xkAbKci3yZY9ZEk8vhLic7KNhLjqdh5ec')
+        ks2 = keystore.from_xpub('ToEA6ij48MPyPqZFWsNtjbpbBMnwFrsn4uSnsH95RV5ppgt2ZEFkk1p52jEFjnnAydSV5rmmmYEBmatiqpHEv5LJVFuXysFXeP2zUqimuCd1So2')
         self._check_xpub_keystore_sanity(ks2)
         self.assertTrue(isinstance(ks2, keystore.BIP32_KeyStore))
 
@@ -119,9 +119,9 @@ class TestWalletKeystoreAddressIntegrity(unittest.TestCase):
 
         ks1 = keystore.from_bip39_seed(seed_words, '', "m/45'/0")
         self.assertTrue(isinstance(ks1, keystore.BIP32_KeyStore))
-        self.assertEqual(ks1.xpub, 'xpub69xafV4YxC6o8Yiga5EiGLAtqR7rgNgNUGiYgw3S9g9pp6XYUne1KxdcfYtxwmA3eBrzMFuYcNQKfqsXCygCo4GxQFHfywxpUbKNfYvGJka')
+        self.assertEqual(ks1.xpub, 'ToEA6in9EDqryvMFHjxvhQLV6QsvD2HLJAb1Jo9BMLDV8GBu6gbhp73hGKvdMssjKTpKYPAcTTDqe2eVckxnSSreqz1VrvYe6LdrpT6AdPd3AvC')
 
-        ks2 = keystore.from_xpub('xpub6Bco9vrgo8rNUSi8Bjomn8xLA41DwPXeuPcgJamNRhTTyGVHsp8fZXaGzp9ypHoei16J6X3pumMAP1u3Dy4jTSWjm4GZowL7Dcn9u4uZC9W')
+        ks2 = keystore.from_xpub('ToEA6ij48MPyPqZFWsNtjbpbBMnwFrsn4uSnsH95RV5ppgt2ZEFkk1p52jEFjnnAydSV5rmmmYEBmatiqpHEv5LJVFuXysFXeP2zUqimuCd1So2')
         self._check_xpub_keystore_sanity(ks2)
         self.assertTrue(isinstance(ks2, keystore.BIP32_KeyStore))
 
