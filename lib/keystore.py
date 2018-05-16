@@ -566,7 +566,7 @@ def bip39_is_checksum_valid(mnemonic):
     b = bytearray.fromhex(h)
     hashed = int(hfu(hashlib.sha256(b).digest()), 16)
     calculated_checksum = hashed >> (256 - checksum_length)
-    print(checksum, calculated_checksum,hashed, words_len, checksum_length, entropy_length, i)
+    #print(checksum, calculated_checksum,hashed, words_len, checksum_length, entropy_length, i)
     return checksum == calculated_checksum, True
 
 def from_bip39_seed(seed, passphrase, derivation):

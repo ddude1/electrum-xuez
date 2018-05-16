@@ -58,7 +58,7 @@ class TestWalletKeystoreAddressIntegrity(unittest.TestCase):
         w = self._create_standard_wallet(ks)
 
         self.assertEqual(w.get_receiving_addresses()[0], 'XYizk38coTEyyLdztrQ1NL23mnN2PJtdmE')
-        self.assertEqual(w.get_change_addresses()[0], 'Xu8Vpo1b81a6zCC574LXjEETvV4Wq58z24')
+        self.assertEqual(w.get_change_addresses()[0], 'XVntqgiJQq7EAm3z5e1DF6xgHyoa4wmEod')
 
     @mock.patch.object(storage.WalletStorage, '_write')
     def test_electrum_seed_old(self, mock_write):
@@ -90,7 +90,7 @@ class TestWalletKeystoreAddressIntegrity(unittest.TestCase):
 
         w = self._create_standard_wallet(ks)
 
-        self.assertEqual(w.get_receiving_addresses()[0], 'XgQx46PwWrSDcZnU9VWiC74CoUw9ibZm8n')
+        self.assertEqual(w.get_receiving_addresses()[0], 'XH5M4z6eofyLo8eP85BPhynRAygD62RkrT')
         self.assertEqual(w.get_change_addresses()[0], 'XqwvRkJQdt2fgShtC68vjAgrEumkqA7qcK')
 
     @mock.patch.object(storage.WalletStorage, '_write')
@@ -109,7 +109,7 @@ class TestWalletKeystoreAddressIntegrity(unittest.TestCase):
 
         w = self._create_multisig_wallet(ks1, ks2)
 
-        self.assertEqual(w.get_receiving_addresses()[0], '7TTLsc2LVWUd6ZnkhHFGJb3dnZMuSQooiu')
+        self.assertEqual(w.get_receiving_addresses()[0], '8XbqdmkckfENFqbX9znDwjbyXBzZFR68bA')
         self.assertEqual(w.get_change_addresses()[0], '7XF9mRa2fUHynUGGLyWzpem8DEYDzN7Bew')
 
     @mock.patch.object(storage.WalletStorage, '_write')
@@ -127,6 +127,6 @@ class TestWalletKeystoreAddressIntegrity(unittest.TestCase):
 
         w = self._create_multisig_wallet(ks1, ks2)
 
-        self.assertEqual(w.get_receiving_addresses()[0], '7hmMoMUPGKPuCnxK1Yz4wawUZ6PinbtLHj')
+        self.assertEqual(w.get_receiving_addresses()[0], '8Jp2qPMJJqxU6XAbXKj8rs7MbwkQ31hkze')
         self.assertEqual(w.get_change_addresses()[0], '7SRcVV8vWMqMPLLy9jUGJTBvJ6fpavXGvy')
 
