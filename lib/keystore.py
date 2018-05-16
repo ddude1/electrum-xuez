@@ -557,7 +557,7 @@ def bip39_is_checksum_valid(mnemonic):
             return False, False
         i = i*n + k
     if words_len not in [12, 15, 18, 21, 24]:
-        print ("bad word count", words_len)
+        #print ("bad word count", words_len)
         return False, True
     entropy = i >> checksum_length
     checksum = i % 2**checksum_length
@@ -567,6 +567,7 @@ def bip39_is_checksum_valid(mnemonic):
     b = bytearray.fromhex(h)
     hashed = int(hfu(hashlib.sha256(b).digest()), 16)
     calculated_checksum = hashed >> (256 - checksum_length)
+    print(calculated_checksum,hashed)
     return checksum == calculated_checksum, True
 
 def from_bip39_seed(seed, passphrase, derivation):
