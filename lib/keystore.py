@@ -557,6 +557,7 @@ def bip39_is_checksum_valid(mnemonic):
             return False, False
         i = i*n + k
     if words_len not in [12, 15, 18, 21, 24]:
+        print "bad word count", words_len
         return False, True
     entropy = i >> checksum_length
     checksum = i % 2**checksum_length
