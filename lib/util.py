@@ -437,7 +437,7 @@ def time_difference(distance_in_time, include_seconds):
 mainnet_block_explorers = {
     'xuez.donkeypool.com': ('https://xuez.donkeypool.com',
                        {'tx': 'tx', 'addr': 'address'}),
- 
+}
 
 testnet_block_explorers = {
     'Xuez.org': ('https://test.insight.xuez.siampm.com',
