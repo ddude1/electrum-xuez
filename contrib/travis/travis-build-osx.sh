@@ -18,12 +18,10 @@ echo wine build version is $ELECTRUM_XUEZ_VERSION
 
 sudo pip3 install -r contrib/requirements.txt
 sudo pip3 install \
-    x11_hash>=1.4 \
+    xevan_hash>=0.2 \
     btchip-python==0.1.24 \
     keepkey==4.0.2 \
     trezor==0.7.16
-
-sudo pip3 install git+git://github.com/ddude1/Xevan_in_Python.git	
 
 pyrcc5 icons.qrc -o gui/qt/icons_rc.py
 
