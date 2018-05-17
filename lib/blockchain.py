@@ -67,14 +67,22 @@ def target_to_bits(target):
 
 def serialize_header(res):
     #print(res)
+    if res.get('version') == 1:
+        s = int_to_hex(res.get('version'), 4) \
+            + rev_hex(res.get('prev_block_hash')) \
+            + rev_hex(res.get('merkle_root')) \
+            + int_to_hex(int(res.get('timestamp')), 4) \
+            + int_to_hex(int(res.get('bits')), 4) \
+            + int_to_hex(int(res.get('nonce')), 4) 
+            #+ rev_hex(res.get('nAccumulatorCheckpoint'))
+        return s
     s = int_to_hex(res.get('version'), 4) \
-        + rev_hex(res.get('prev_block_hash')) \
-        + rev_hex(res.get('merkle_root')) \
-        + int_to_hex(int(res.get('timestamp')), 4) \
-        + int_to_hex(int(res.get('bits')), 4) \
-        + int_to_hex(int(res.get('nonce')), 4) \
-        + rev_hex(res.get('nAccumulatorCheckpoint'))
-    #print(s)    
+            + rev_hex(res.get('prev_block_hash')) \
+            + rev_hex(res.get('merkle_root')) \
+            + int_to_hex(int(res.get('timestamp')), 4) \
+            + int_to_hex(int(res.get('bits')), 4) \
+            + int_to_hex(int(res.get('nonce')), 4) \
+            + rev_hex(res.get('nAccumulatorCheckpoint'))
     return s
 
 def deserialize_header(s, height):
@@ -392,8 +400,7 @@ class Blockchain(util.PrintError):
         if check_height and self.height() != height - 1:
             return False
         if height == 0:
-            print("check genesis")
-            return hash_header(header[:80]) == bitcoin.NetworkConstants.GENESIS
+            return hash_header(header) == bitcoin.NetworkConstants.GENESIS
         previous_header = self.read_header(height -1)
         if not previous_header:
             return False
