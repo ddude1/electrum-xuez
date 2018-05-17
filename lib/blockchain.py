@@ -161,9 +161,11 @@ class Blockchain(util.PrintError):
         return self.get_hash(self.get_checkpoint()).lstrip('00')[0:10]
 
     def check_header(self, header):
+        print("Header", header)
         header_hash = hash_header(header)
         print("Header hash", header_hash)
         height = header.get('block_height')
+        print("Heaight",height)
         return header_hash == self.get_hash(height)
 
     def fork(parent, header):
@@ -303,6 +305,7 @@ class Blockchain(util.PrintError):
             with open(name, 'rb') as f:
                 f.seek(delta * bitcoin.NetworkConstants.HEADER_SIZE)
                 h = f.read(bitcoin.NetworkConstants.HEADER_SIZE)
+                print("H-->",h)
         return deserialize_header(h, height)
 
     def get_hash(self, height):
