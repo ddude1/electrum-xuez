@@ -84,8 +84,7 @@ def deserialize_header(s, height):
     h['timestamp'] = hex_to_int(s[68:72])
     h['bits'] = hex_to_int(s[72:76])
     h['nonce'] = hex_to_int(s[76:80])
-    if (h['version'] != 1)
-        h['acc_chkpt'] = hash_encode(s[80:112])
+    h['acc_chkpt'] = hash_encode(s[80:112])
     h['block_height'] = height
     return h
 
