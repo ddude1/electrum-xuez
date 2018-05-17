@@ -199,6 +199,7 @@ def pw_decode(s, password):
 
 
 def rev_hex(s):
+    print(s)
     return bh2u(bfh(s)[::-1])
 
 

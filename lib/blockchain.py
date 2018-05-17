@@ -73,6 +73,7 @@ def serialize_header(res):
         + int_to_hex(int(res.get('bits')), 4) \
         + int_to_hex(int(res.get('nonce')), 4) 
     if s[:2]=="04":   
+        print( s , res)
         s+=rev_hex(res.get('acc_chkpt'))
     return s
 
