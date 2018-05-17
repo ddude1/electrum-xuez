@@ -66,7 +66,7 @@ def target_to_bits(target):
 
 
 def serialize_header(res):
-    print(res)
+    #print(res)
     s = int_to_hex(res.get('version'), 4) \
         + rev_hex(res.get('prev_block_hash')) \
         + rev_hex(res.get('merkle_root')) \
@@ -95,6 +95,7 @@ def hash_header(header):
         return '0' * 64
     if header.get('prev_block_hash') is None:
         header['prev_block_hash'] = '00'*32
+    print("Hash header func",header)
     return hash_encode(PoWHash(bfh(serialize_header(header))))
 
 
@@ -161,11 +162,11 @@ class Blockchain(util.PrintError):
         return self.get_hash(self.get_checkpoint()).lstrip('00')[0:10]
 
     def check_header(self, header):
-        print("Header", header)
+        #print("Header", header)
         header_hash = hash_header(header)
-        print("Header hash", header_hash)
+        #print("Header hash", header_hash)
         height = header.get('block_height')
-        print("Heaight",height)
+        #print("Heaight",height)
         return header_hash == self.get_hash(height)
 
     def fork(parent, header):
