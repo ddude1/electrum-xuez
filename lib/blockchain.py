@@ -300,8 +300,9 @@ class Blockchain(util.PrintError):
         delta = header.get('block_height') - self.checkpoint
         data = bfh(serialize_header(header))
         assert delta == self.size()
-        assert len(data) == bitcoin.NetworkConstants.HEADER_SIZE
-        self.write(data, delta*bitcoin.NetworkConstants.HEADER_SIZE)
+        header_size = bitcoin.NetworkConstants.HEADER_SIZE if not header.get('block_height') else 80
+        assert len(data) == header_size
+        self.write(data, delta*header_size)
         self.swap_with_parent()
 
     def read_header(self, height):
@@ -313,11 +314,12 @@ class Blockchain(util.PrintError):
         if height > self.height():
             return
         delta = height - self.checkpoint
+        header_size = bitcoin.NetworkConstants.HEADER_SIZE if not height else 80
         name = self.path()
         if os.path.exists(name):
             with open(name, 'rb') as f:
-                f.seek(delta * bitcoin.NetworkConstants.HEADER_SIZE)
-                h = f.read(bitcoin.NetworkConstants.HEADER_SIZE)
+                f.seek(delta * header_size)
+                h = f.read(header_size)
                 print("H-->",h)
         return deserialize_header(h, height)
 
