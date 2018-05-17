@@ -96,6 +96,10 @@ def hash_header(header):
     if header.get('prev_block_hash') is None:
         header['prev_block_hash'] = '00'*32
     print("Hash header func",header)
+    print(serialize_header(header))
+    print(bfh(serialize_header(header)))
+    print(PoWHash(bfh(serialize_header(header))))
+    print(hash_encode(PoWHash(bfh(serialize_header(header)))))
     return hash_encode(PoWHash(bfh(serialize_header(header))))
 
 
