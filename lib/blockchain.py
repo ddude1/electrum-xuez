@@ -387,6 +387,7 @@ class Blockchain(util.PrintError):
         if check_height and self.height() != height - 1:
             return False
         if height == 0:
+            print("check genesis")
             return hash_header(header) == bitcoin.NetworkConstants.GENESIS
         previous_header = self.read_header(height -1)
         if not previous_header:
