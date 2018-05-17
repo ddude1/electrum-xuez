@@ -149,11 +149,11 @@ class TestNetworkAddr(unittest.TestCase):
 class TestParseMasternodeConf(unittest.TestCase):
     def test_parse(self):
         lines = [
-            'mn1 127.0.0.2:19999 XJo71yhAvayar2geJiJocDMXVSwQCm14gNZvMmk7Pc1M8Bv8Ev7L 2bcd3c84c84f87eaa86e4e56834c92927a07f9e18718810b92e0d0324456a67c 0',
+            'mn1 127.0.0.2:19999 87SBG1YJ1SsCt8V37VCxc92FbzPVqaBYe44ojyKLZbrv3GYHNcm 2bcd3c84c84f87eaa86e4e56834c92927a07f9e18718810b92e0d0324456a67c 0',
         ]
         conf_lines = parse_masternode_conf(lines)
         expected = [
-            MasternodeConfLine('mn1', '127.0.0.2:19999', 'XJo71yhAvayar2geJiJocDMXVSwQCm14gNZvMmk7Pc1M8Bv8Ev7L', '2bcd3c84c84f87eaa86e4e56834c92927a07f9e18718810b92e0d0324456a67c', 0),
+            MasternodeConfLine('mn1', '127.0.0.2:19999', '87SBG1YJ1SsCt8V37VCxc92FbzPVqaBYe44ojyKLZbrv3GYHNcm', '2bcd3c84c84f87eaa86e4e56834c92927a07f9e18718810b92e0d0324456a67c', 0),
         ]
 
         for i, conf in enumerate(conf_lines):
