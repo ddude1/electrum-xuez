@@ -74,7 +74,7 @@ def serialize_header(res):
         + int_to_hex(int(res.get('bits')), 4) \
         + int_to_hex(int(res.get('nonce')), 4) \
         + rev_hex(res.get('nAccumulatorCheckpoint'))
-    print(s)    
+    #print(s)    
     return s
 
 def deserialize_header(s, height):
@@ -162,6 +162,7 @@ class Blockchain(util.PrintError):
 
     def check_header(self, header):
         header_hash = hash_header(header)
+        print("Header hash", header_hash)
         height = header.get('block_height')
         return header_hash == self.get_hash(height)
 
