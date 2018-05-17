@@ -71,8 +71,9 @@ def serialize_header(res):
         + rev_hex(res.get('merkle_root')) \
         + int_to_hex(int(res.get('timestamp')), 4) \
         + int_to_hex(int(res.get('bits')), 4) \
-        + int_to_hex(int(res.get('nonce')), 4) \
-        + ['',rev_hex(res.get('acc_chkpt'))][s[:2]=="04"]
+        + int_to_hex(int(res.get('nonce')), 4) 
+    if s[:2]=="04":   
+        s+=rev_hex(res.get('acc_chkpt'))
     return s
 
 def deserialize_header(s, height):
