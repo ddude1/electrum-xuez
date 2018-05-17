@@ -299,7 +299,7 @@ class Blockchain(util.PrintError):
     def save_header(self, header):
         delta = header.get('block_height') - self.checkpoint
         data = bfh(serialize_header(header))
-        print(data, len(data))
+        print(data, len(data), header.get('block_height'))
         assert delta == self.size()
         header_size = bitcoin.NetworkConstants.HEADER_SIZE 
         #if header.get('block_height') == 0
