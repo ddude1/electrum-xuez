@@ -299,11 +299,11 @@ class Blockchain(util.PrintError):
     def save_header(self, header):
         delta = header.get('block_height') - self.checkpoint
         data = bfh(serialize_header(header))
+        print(data, len(data))
         assert delta == self.size()
         header_size = bitcoin.NetworkConstants.HEADER_SIZE 
-        if header.get('block_height') == 0
-            header_size = 80
-        print(len(data), header_size)
+        #if header.get('block_height') == 0
+         #   header_size = 80
         assert len(data) == header_size
         self.write(data, delta*header_size)
         self.swap_with_parent()
