@@ -67,7 +67,7 @@ def target_to_bits(target):
 
 def serialize_header(res):
     #print(res)
-    if res.get('version') == 1:
+ """   if res.get('version') == 1:
         s = int_to_hex(res.get('version'), 4) \
             + rev_hex(res.get('prev_block_hash')) \
             + rev_hex(res.get('merkle_root')) \
@@ -75,7 +75,7 @@ def serialize_header(res):
             + int_to_hex(int(res.get('bits')), 4) \
             + int_to_hex(int(res.get('nonce')), 4) 
             #+ rev_hex(res.get('nAccumulatorCheckpoint'))
-        return s
+        return s """
     s = int_to_hex(res.get('version'), 4) \
             + rev_hex(res.get('prev_block_hash')) \
             + rev_hex(res.get('merkle_root')) \
@@ -104,11 +104,14 @@ def hash_header(header):
     if header.get('prev_block_hash') is None:
         header['prev_block_hash'] = '00'*32
     print("Hash header func",header)
-    print(serialize_header(header))
-    print(bfh(serialize_header(header)))
-    print(PoWHash(bfh(serialize_header(header))))
-    print(hash_encode(PoWHash(bfh(serialize_header(header)))))
-    return hash_encode(PoWHash(bfh(serialize_header(header))))
+    srl_header=serialize_header(header)
+    print(srl_header)
+    print(bfh(srl_header))
+    print(PoWHash(bfh(srl_header)))
+    print(hash_encode(PoWHash(bfh(srl_header))))
+    if header.get('block_height') == 0:
+        return hash_encode(PoWHash(bfh(srl_header[:80])))    
+    return hash_encode(PoWHash(bfh(srl_header)))
 
 
 blockchains = {}
@@ -297,9 +300,10 @@ class Blockchain(util.PrintError):
             self.update_size()
 
     def save_header(self, header):
-        delta = header.get('block_height') - self.checkpoint
+        height = header.get('block_height') 
+        delta = height - self.checkpoint
         data = bfh(serialize_header(header))
-        print(data, len(data), header.get('block_height'))
+        print(data, len(data), height)
         assert delta == self.size()
         header_size = bitcoin.NetworkConstants.HEADER_SIZE 
         #if header.get('block_height') == 0
