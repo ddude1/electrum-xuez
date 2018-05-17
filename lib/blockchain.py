@@ -301,6 +301,7 @@ class Blockchain(util.PrintError):
         data = bfh(serialize_header(header))
         assert delta == self.size()
         header_size = bitcoin.NetworkConstants.HEADER_SIZE if not header.get('block_height') else 80
+        print(len(data), header_size)
         assert len(data) == header_size
         self.write(data, delta*header_size)
         self.swap_with_parent()
