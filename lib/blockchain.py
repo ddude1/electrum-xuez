@@ -74,7 +74,7 @@ def serialize_header(res):
         + int_to_hex(int(res.get('bits')), 4) \
         + int_to_hex(int(res.get('nonce')), 4) \
         + rev_hex(res.get('acc_chkpt'))
-        print( s , res)
+    print(s)    
     return s
 
 def deserialize_header(s, height):
