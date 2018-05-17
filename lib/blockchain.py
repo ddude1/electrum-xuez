@@ -66,15 +66,15 @@ def target_to_bits(target):
 
 
 def serialize_header(res):
+    print(res)
     s = int_to_hex(res.get('version'), 4) \
         + rev_hex(res.get('prev_block_hash')) \
         + rev_hex(res.get('merkle_root')) \
         + int_to_hex(int(res.get('timestamp')), 4) \
         + int_to_hex(int(res.get('bits')), 4) \
-        + int_to_hex(int(res.get('nonce')), 4) 
-    if s[:2]=="04":   
+        + int_to_hex(int(res.get('nonce')), 4) \
+        + rev_hex(res.get('acc_chkpt'))
         print( s , res)
-        s+=rev_hex(res.get('acc_chkpt'))
     return s
 
 def deserialize_header(s, height):
