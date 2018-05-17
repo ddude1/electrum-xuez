@@ -72,8 +72,8 @@ def serialize_header(res):
         + int_to_hex(int(res.get('timestamp')), 4) \
         + int_to_hex(int(res.get('bits')), 4) \
         + int_to_hex(int(res.get('nonce')), 4) 
-     print(s)   
-       # + rev_hex(res.get('acc_chkpt'))
+    if ( s[:2] == "04") 
+        s+=rev_hex(res.get('acc_chkpt'))
     return s
 
 def deserialize_header(s, height):
@@ -85,7 +85,8 @@ def deserialize_header(s, height):
     h['timestamp'] = hex_to_int(s[68:72])
     h['bits'] = hex_to_int(s[72:76])
     h['nonce'] = hex_to_int(s[76:80])
-    #h['acc_chkpt'] = hash_encode(s[80:112])
+    if (h['version'] != 1)
+        h['acc_chkpt'] = hash_encode(s[80:112])
     h['block_height'] = height
     return h
 
