@@ -73,6 +73,7 @@ class NetworkConstants:
         cls.DEFAULT_SERVERS = read_json_dict('servers.json')
         cls.DRKV_HEADER = 0x02fe52f8  # drkv
         cls.DRKP_HEADER = 0x02fe52cc  # drkp
+        cls.HEADER_SIZE = 112  # basic header size
         XPRV_HEADERS['standard'] = 0x0221312b
         XPUB_HEADERS['standard'] = 0x022d2533
 
@@ -88,6 +89,7 @@ class NetworkConstants:
         cls.DEFAULT_SERVERS = read_json_dict('servers_testnet.json')
         cls.DRKV_HEADER = 0x3a8061a0  # DRKV
         cls.DRKP_HEADER = 0x3a805837  # DRKP
+        cls.HEADER_SIZE = 112  # basic header size
         XPRV_HEADERS['standard'] = 0x04358394
         XPUB_HEADERS['standard'] = 0x043587cf
 
