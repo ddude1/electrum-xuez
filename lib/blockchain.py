@@ -109,8 +109,8 @@ def hash_header(header):
     #print(bfh(srl_header))
     #print(PoWHash(bfh(srl_header)))
     print("hash Header return",hash_encode(PoWHash(bfh(srl_header))))
-    if header.get('block_height') == 0:
-        return hash_encode(PoWHash(bfh(srl_header[:80])))    
+    #if header.get('block_height') == 0:
+    #    return hash_encode(PoWHash(bfh(srl_header[:80])))    
     return hash_encode(PoWHash(bfh(srl_header)))
 
 
