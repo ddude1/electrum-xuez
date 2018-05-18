@@ -408,6 +408,7 @@ class Blockchain(util.PrintError):
     def can_connect(self, header, check_height=True):
         print("canCON",header,check_height)
         height = header['block_height']
+        print(height, self.height())
         if check_height and self.height() != height - 1:
             print("wrong here")
             return False
