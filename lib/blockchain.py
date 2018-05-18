@@ -409,11 +409,13 @@ class Blockchain(util.PrintError):
         print("canCON",header,check_height)
         height = header['block_height']
         if check_height and self.height() != height - 1:
+            print("wrong here")
             return False
         if height == 0:
             return hash_header(header) == bitcoin.NetworkConstants.GENESIS
         previous_header = self.read_header(height -1)
         if not previous_header:
+            print("inc prev header")
             return False
         prev_hash = hash_header(previous_header)
         if prev_hash != header.get('prev_block_hash'):
