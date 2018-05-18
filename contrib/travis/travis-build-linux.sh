@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 if [[ $TRAVIS_PYTHON_VERSION != 3.4 ]]; then
   exit 0
@@ -17,6 +18,12 @@ docker run --rm \
     -v $(pwd):/opt \
     -w /opt/electrum-xuez \
     -t zebralucky/electrum-xuez-winebuild:Linux /opt/build_linux.sh
+
+sudo chown -R 1000 electrum-xuez
+docker run --rm \
+    -v $(pwd)/electrum-xuez:/home/buildozer/build \
+    -t zebralucky/electrum-dash-winebuild:Kivy bash -c \
+    './contrib/make_packages && mv ./contrib/packages . && ./contrib/make_apk'
 
 export WINEARCH=win32
 export WINEPREFIX=/root/.wine-32

@@ -3,5 +3,8 @@ pushd lib
 VERSION=$(python -c "import version; print version.ELECTRUM_VERSION")".0"
 popd
 echo $VERSION
-echo $VERSION > contrib/apk_version
-pushd ./gui/kivy/; make apk; popd
+echo "version_apk = '$VERSION'" > contrib/versions.py
+pushd ./gui/kivy/
+make theming
+make release
+popd
