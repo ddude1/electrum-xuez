@@ -66,7 +66,6 @@ def target_to_bits(target):
 
 
 def serialize_header(res):
-    #print(res)
     if res.get('version') == 1:
         s = int_to_hex(res.get('version'), 4) \
             + rev_hex(res.get('prev_block_hash')) \
@@ -103,14 +102,7 @@ def hash_header(header):
         return '0' * 64
     if header.get('prev_block_hash') is None:
         header['prev_block_hash'] = '00'*32
-    #print("Hash header func",header)
     srl_header=serialize_header(header)
-    #print(srl_header)
-    #print(bfh(srl_header))
-    #print(PoWHash(bfh(srl_header)))
-    print("hash Header return",hash_encode(PoWHash(bfh(srl_header))))
-    #if header.get('block_height') == 0:
-    #    return hash_encode(PoWHash(bfh(srl_header[:80])))    
     return hash_encode(PoWHash(bfh(srl_header)))
 
 
@@ -139,7 +131,6 @@ def check_header(header):
     return False
 
 def can_connect(header):
-    print("can_connect", header)
     for b in blockchains.values():
         if b.can_connect(header):
             return b
@@ -178,11 +169,8 @@ class Blockchain(util.PrintError):
         return self.get_hash(self.get_checkpoint()).lstrip('00')[0:10]
 
     def check_header(self, header):
-        #print("Header", header)
         header_hash = hash_header(header)
-        #print("Header hash", header_hash)
         height = header.get('block_height')
-        print("Heaight",height)
         return header_hash == self.get_hash(height)
 
     def fork(parent, header):
@@ -307,7 +295,6 @@ class Blockchain(util.PrintError):
         if header.get('block_height') == 0:
             srl_header+="0000000000000000000000000000000000000000000000000000000000000000"
         data = bfh(srl_header)
-        print(data, srl_header, len(data),len(srl_header), height)
         assert delta == self.size()
         header_size = bitcoin.NetworkConstants.HEADER_SIZE 
         #if header.get('block_height') == 0:
@@ -331,7 +318,6 @@ class Blockchain(util.PrintError):
             with open(name, 'rb') as f:
                 f.seek(delta * header_size)
                 h = f.read(header_size)
-                print("H-->",h)
         return deserialize_header(h, height)
 
     def get_hash(self, height):
@@ -413,16 +399,12 @@ class Blockchain(util.PrintError):
         height = header['block_height']
         
         if check_height and self.height() != height - 1:
-            #print("wrong here")
             return False
         if height == 0:
-            #print(hash_header(header))
-            #print(bitcoin.NetworkConstants.GENESIS)
             return hash_header(header) == bitcoin.NetworkConstants.GENESIS
 
         previous_header = self.read_header(height -1)
         if not previous_header:
-            print("inc prev header")
             return False
         prev_hash = hash_header(previous_header)
         if prev_hash != header.get('prev_block_hash'):
