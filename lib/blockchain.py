@@ -303,12 +303,15 @@ class Blockchain(util.PrintError):
     def save_header(self, header):
         height = header.get('block_height') 
         delta = height - self.checkpoint
-        data = bfh(serialize_header(header))
-        print(data, len(data), height)
+        srl_header = serialize_header(header) 
+        if header.get('block_height') == 0:
+            srl_header+="0000000000000000000000000000000000000000000000000000000000000000"
+        data = bfh(srl_header)
+        print(data, srl_header, len(data),len(srl_header) height)
         assert delta == self.size()
         header_size = bitcoin.NetworkConstants.HEADER_SIZE 
-        if header.get('block_height') == 0:
-           header_size = 80
+        #if header.get('block_height') == 0:
+        #   header_size = 80
         assert len(data) == header_size
         self.write(data, delta*header_size)
         self.swap_with_parent()
