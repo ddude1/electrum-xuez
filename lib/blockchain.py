@@ -307,8 +307,8 @@ class Blockchain(util.PrintError):
         print(data, len(data), height)
         assert delta == self.size()
         header_size = bitcoin.NetworkConstants.HEADER_SIZE 
-        #if header.get('block_height') == 0
-         #   header_size = 80
+        if header.get('block_height') == 0:
+           header_size = 80
         assert len(data) == header_size
         self.write(data, delta*header_size)
         self.swap_with_parent()
@@ -406,16 +406,16 @@ class Blockchain(util.PrintError):
             return self.get_target_dgw(height, chain)
 
     def can_connect(self, header, check_height=True):
-        print("canCON",header,check_height)
+        
         height = header['block_height']
-        print(height, self.height())
-        if height == 0:
-            print(hash_header(header))
-            print(bitcoin.NetworkConstants.GENESIS)
-            return hash_header(header) == bitcoin.NetworkConstants.GENESIS
+        
         if check_height and self.height() != height - 1:
-            print("wrong here")
+            #print("wrong here")
             return False
+        if height == 0:
+            #print(hash_header(header))
+            #print(bitcoin.NetworkConstants.GENESIS)
+            return hash_header(header) == bitcoin.NetworkConstants.GENESIS
 
         previous_header = self.read_header(height -1)
         if not previous_header:
