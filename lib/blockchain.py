@@ -182,7 +182,7 @@ class Blockchain(util.PrintError):
         header_hash = hash_header(header)
         #print("Header hash", header_hash)
         height = header.get('block_height')
-        #print("Heaight",height)
+        print("Heaight",height)
         return header_hash == self.get_hash(height)
 
     def fork(parent, header):
@@ -406,6 +406,7 @@ class Blockchain(util.PrintError):
             return self.get_target_dgw(height, chain)
 
     def can_connect(self, header, check_height=True):
+        print("canCON",header,check_height)
         height = header['block_height']
         if check_height and self.height() != height - 1:
             return False
