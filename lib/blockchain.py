@@ -410,6 +410,8 @@ class Blockchain(util.PrintError):
         height = header['block_height']
         print(height, self.height())
         if height == 0:
+            print(hash_header(header))
+            print(bitcoin.NetworkConstants.GENESIS)
             return hash_header(header) == bitcoin.NetworkConstants.GENESIS
         if check_height and self.height() != height - 1:
             print("wrong here")
