@@ -139,6 +139,7 @@ def check_header(header):
     return False
 
 def can_connect(header):
+    print("can_connect", header)
     for b in blockchains.values():
         if b.can_connect(header):
             return b
