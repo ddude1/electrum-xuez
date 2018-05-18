@@ -103,10 +103,10 @@ def hash_header(header):
         return '0' * 64
     if header.get('prev_block_hash') is None:
         header['prev_block_hash'] = '00'*32
-    print("Hash header func",header)
+    #print("Hash header func",header)
     srl_header=serialize_header(header)
-    print(srl_header)
-    print(bfh(srl_header))
+    #print(srl_header)
+    #print(bfh(srl_header))
     print(PoWHash(bfh(srl_header)))
     print(hash_encode(PoWHash(bfh(srl_header))))
     if header.get('block_height') == 0:
