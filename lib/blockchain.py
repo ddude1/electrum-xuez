@@ -67,7 +67,7 @@ def target_to_bits(target):
 
 def serialize_header(res):
     #print(res)
- """   if res.get('version') == 1:
+    if res.get('version') == 1:
         s = int_to_hex(res.get('version'), 4) \
             + rev_hex(res.get('prev_block_hash')) \
             + rev_hex(res.get('merkle_root')) \
@@ -75,7 +75,7 @@ def serialize_header(res):
             + int_to_hex(int(res.get('bits')), 4) \
             + int_to_hex(int(res.get('nonce')), 4) 
             #+ rev_hex(res.get('nAccumulatorCheckpoint'))
-        return s """
+        return s 
     s = int_to_hex(res.get('version'), 4) \
             + rev_hex(res.get('prev_block_hash')) \
             + rev_hex(res.get('merkle_root')) \
