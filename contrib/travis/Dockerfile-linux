@@ -1,6 +1,0 @@
-FROM debian:stretch-slim
-LABEL maintainer "ddude"
-
-RUN apt-get update -y \
-    && apt-get install -y python3-pip pyqt5-dev-tools \
-    && rm -rf /var/lib/apt/lists/*
