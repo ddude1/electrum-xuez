@@ -307,7 +307,7 @@ class Blockchain(util.PrintError):
         if header.get('block_height') == 0:
             srl_header+="0000000000000000000000000000000000000000000000000000000000000000"
         data = bfh(srl_header)
-        print(data, srl_header, len(data),len(srl_header) height)
+        print(data, srl_header, len(data),len(srl_header), height)
         assert delta == self.size()
         header_size = bitcoin.NetworkConstants.HEADER_SIZE 
         #if header.get('block_height') == 0:
@@ -325,7 +325,7 @@ class Blockchain(util.PrintError):
         if height > self.height():
             return
         delta = height - self.checkpoint
-        header_size = bitcoin.NetworkConstants.HEADER_SIZE if not height else 80
+        header_size = bitcoin.NetworkConstants.HEADER_SIZE #if not height else 80
         name = self.path()
         if os.path.exists(name):
             with open(name, 'rb') as f:
