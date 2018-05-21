@@ -1,0 +1,17 @@
+# If you want electrum-xuez to appear in a linux app launcher ("start menu"), install this by doing:
+# sudo desktop-file-install electrum_xuez.desktop
+
+[Desktop Entry]
+Comment=Lightweight Xuez Client
+Exec=electrum-xuez %u
+GenericName[en_US]=Electrum-XUEZ
+GenericName=Electrum-XUEZ
+Icon=electrum-xuez
+Name[en_US]=Electrum Xuez Wallet
+Name=Electrum Xuez Wallet
+Categories=Network;
+StartupNotify=false
+Terminal=false
+Type=Application
+MimeType=x-scheme-handler/xuezpay;
+
