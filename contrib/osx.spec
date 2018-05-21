@@ -42,6 +42,7 @@ datas = [
     ('lib/servers.json', 'electrum_xuez'),
     ('lib/servers_testnet.json', 'electrum_xuez'),
     ('lib/currencies.json', 'electrum_xuez'),
+    ('lib/locale', 'electrum_xuez/locale'),
     ('lib/wordlist', 'electrum_xuez/wordlist'),
 ]
 

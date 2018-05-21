@@ -1,29 +1,24 @@
 #!/bin/bash
-set -e
-
-if [[ $TRAVIS_PYTHON_VERSION != 3.4 ]]; then
-  exit 0
-fi
+set -ev
 
 if [[ -z $TRAVIS_TAG ]]; then
-  exit 0
+  echo TRAVIS_TAG unset, exiting
+  exit 1
 fi
+
+BUILD_REPO_URL=https://github.com/ddude1/electrum-xuez.git
 
 cd build
 
-BUILD_REPO_URL=https://github.com/ddude1/electrum-xuez.git
 git clone --branch $TRAVIS_TAG $BUILD_REPO_URL electrum-xuez
 
 docker run --rm \
     -v $(pwd):/opt \
     -w /opt/electrum-xuez \
-    -t zebralucky/electrum-xuez-winebuild:Linux /opt/build_linux.sh
+    -t zebralucky/electrum-dash-winebuild:Linux /opt/build_linux.sh
 
-sudo chown -R 1000 electrum-xuez
-docker run --rm \
-    -v $(pwd)/electrum-xuez:/home/buildozer/build \
-    -t zebralucky/electrum-dash-winebuild:Kivy bash -c \
-    './contrib/make_packages && mv ./contrib/packages . && ./contrib/make_apk'
+sudo find . -name '*.po' -delete
+sudo find . -name '*.pot' -delete
 
 export WINEARCH=win32
 export WINEPREFIX=/root/.wine-32
@@ -36,7 +31,7 @@ docker run --rm \
     -v $(pwd):/opt \
     -v $(pwd)/electrum-xuez/:$WINEPREFIX/drive_c/electrum-xuez \
     -w /opt/electrum-xuez \
-    -t zebralucky/electrum-xuez-winebuild:Wine /opt/build_wine.sh
+    -t zebralucky/electrum-dash-winebuild:Wine /opt/build_wine.sh
 
 export WINEARCH=win64
 export WINEPREFIX=/root/.wine-64
@@ -49,4 +44,4 @@ docker run --rm \
     -v $(pwd):/opt \
     -v $(pwd)/electrum-xuez/:$WINEPREFIX/drive_c/electrum-xuez \
     -w /opt/electrum-xuez \
-    -t zebralucky/electrum-xuez-winebuild:Wine /opt/build_wine.sh
+    -t zebralucky/electrum-dash-winebuild:Wine /opt/build_wine.sh
