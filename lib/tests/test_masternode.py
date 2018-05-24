@@ -132,7 +132,7 @@ class TestMasternodePing(unittest.TestCase):
         current_time = 1461858375
         ping = MasternodePing(vin=vin, block_hash=block_hash, sig_time=current_time)
 
-        expected_sig = 'H0Vh6xI0by9A1OcghrUz2vFxDPbLwyO63L45p7sNTo7QR/TvzTu9tMUlP4QBSl2KVLusoDvDkiyk+BZu3mMqJU4='
+        expected_sig = 'H6k0M7G15GLnJ7i7Zcs8uCHcVRsn1P0hKK4lVMkgY4byaOvUECCsfxA9ktUiFT8scfFYYb/sxkcD8ifU/SEnBUg='
         wif = 'YV56icVrjNioXn9kpZeL3DvtC7aN7kt8tr5ur2wqpMaXeJ3YQirG'
         sig = ping.sign(wif, current_time = current_time)
         address = bitcoin.address_from_private_key(wif)
