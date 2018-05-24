@@ -8,7 +8,7 @@ RUN dpkg --add-architecture i386 \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
         wine-development wine32-development wine64-development libwine-development libwine-development:i386 \
-	cabextract xauth xvfb wget ca-certificates zip unzip \
+        cabextract xauth xvfb wget ca-certificates zip unzip \
     && wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks \
     && chmod +x winetricks && mv winetricks /usr/local/bin \
     && rm -rf /var/lib/apt/lists/*

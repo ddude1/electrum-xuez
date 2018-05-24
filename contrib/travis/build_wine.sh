@@ -14,7 +14,7 @@ cp contrib/pyi_tctl_runtimehook.py .
 
 wine pip install -r contrib/requirements.txt
 
-wine pip install git+git://github.com/ddude1/Xevan_in_Python.git
+wine pip install xevan_hash
 wine pip install cython
 wine pip install hidapi
 wine pip install btchip-python==0.1.24
