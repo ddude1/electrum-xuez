@@ -35,7 +35,7 @@ hiddenimports = [
 ]
 
 datas = [
-    ('lib/servers.json', 'electrum_xuex'),
+    ('lib/servers.json', 'electrum_xuez'),
     ('lib/servers_testnet.json', 'electrum_xuez'),
     ('lib/currencies.json', 'electrum_xuez'),
     ('lib/wordlist', 'electrum_xuez/wordlist'),
