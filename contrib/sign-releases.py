@@ -27,7 +27,7 @@ Manual signing:
     jarsigner -verbose \
         -tsa http://sha256timestamp.ws.symantec.com/sha256/timestamp \
         -sigalg SHA1withRSA -digestalg SHA1 \
-        -sigfile dash-electrum \
+        -sigfile xuez-electrum \
         -keystore ~/.jks/keystore \
         Electrum_XUEZ-3.0.6.1-release-unsigned.apk \
         xuezcoin.com
@@ -143,9 +143,9 @@ PEP440_PUBVER_PATTERN = re.compile('^((\d+)!)?'
                                    '([a-zA-Z]+\d+)?'
                                    '((\.[a-zA-Z]+\d+)*)$')
 REL_NOTES_PATTERN = re.compile('^#.+?(^[^#].+?)^#.+?', re.M | re.S)
-SDIST_NAME_PATTERN = re.compile('^Electrum-DASH-(.*).tar.gz$')
-SDIST_DIR_TEMPLATE = 'Electrum-DASH-{version}'
-PPA_SOURCE_NAME = 'electrum-dash'
+SDIST_NAME_PATTERN = re.compile('^Electrum-XUEZ-(.*).tar.gz$')
+SDIST_DIR_TEMPLATE = 'Electrum-XUEZ-{version}'
+PPA_SOURCE_NAME = 'electrum-xuez'
 PPA_ORIG_NAME_TEMPLATE = '%s_{version}.orig.tar.gz' % PPA_SOURCE_NAME
 CHANGELOG_TEMPLATE = """%s ({ppa_version}) {series}; urgency=medium
 {changes} -- {uid}  {time}""" % PPA_SOURCE_NAME
@@ -156,7 +156,7 @@ LP_ARCHIVES_TEMPLATE = '%s/~{user}/+archive/ubuntu/{ppa}' % LP_API_URL
 
 # sing_apk related definitions
 JKS_KEYSTORE = os.path.join(HOME_DIR, '.jks/keystore')
-JKS_ALIAS = 'electrum.dash.org'
+JKS_ALIAS = 'xuezcoin.com'
 JKS_STOREPASS = 'JKS_STOREPASS'
 JKS_KEYPASS = 'JKS_KEYPASS'
 KEYTOOL_ARGS = ['keytool', '-list', '-storepass:env', JKS_STOREPASS]
@@ -164,12 +164,12 @@ JARSIGNER_ARGS = [
     'jarsigner', '-verbose',
     '-tsa', 'http://sha256timestamp.ws.symantec.com/sha256/timestamp',
     '-sigalg', 'SHA1withRSA', '-digestalg', 'SHA1',
-    '-sigfile', 'dash-electrum',
+    '-sigfile', 'xuez-electrum',
     '-storepass:env', JKS_STOREPASS,
     '-keypass:env', JKS_KEYPASS,
 ]
-UNSIGNED_APK_PATTERN = re.compile('^Electrum_DASH-(.*)-release-unsigned.apk$')
-SIGNED_APK_TEMPLATE = 'Electrum_DASH-{version}-release.apk'
+UNSIGNED_APK_PATTERN = re.compile('^Electrum_XUEZ-(.*)-release-unsigned.apk$')
+SIGNED_APK_TEMPLATE = 'Electrum_XUEZ-{version}-release.apk'
 
 
 os.environ['QUILT_PATCHES'] = 'debian/patches'
