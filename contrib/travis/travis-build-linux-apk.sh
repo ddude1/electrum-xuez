@@ -10,7 +10,7 @@ BUILD_REPO_URL=https://github.com/ddude1/electrum-xuez.git
 
 cd build
 
-git clone --branch $TRAVIS_TAG $BUILD_REPO_URL electrum-dash
+git clone --branch $TRAVIS_TAG $BUILD_REPO_URL electrum-xuez
 
 docker run --rm \
     -v $(pwd):/opt \
@@ -20,7 +20,7 @@ docker run --rm \
 sudo find . -name '*.po' -delete
 sudo find . -name '*.pot' -delete
 
-sudo chown -R 1000 electrum-dash
+sudo chown -R 1000 electrum-xuez
 
 docker run --rm \
     -v $(pwd)/electrum-xuez:/home/buildozer/build \
