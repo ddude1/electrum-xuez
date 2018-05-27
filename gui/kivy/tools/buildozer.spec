@@ -38,7 +38,7 @@ requirements = python3crystax, android, openssl, plyer, kivy==1.10.0, xevan_hash
 presplash.filename = %(source.dir)s/icons/electrum_presplash.png
 
 # (str) Icon of the application
-icon.filename = %(source.dir)s/icons/electrum-xuez.png
+icon.filename = %(source.dir)s/icons/electrum_xuez.png
 
 # (str) Supported orientation (one of landscape, portrait or all)
 orientation = portrait
