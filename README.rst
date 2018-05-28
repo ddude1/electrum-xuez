@@ -28,7 +28,13 @@ Qt interface, install the Qt dependencies::
 If you downloaded the official package (tar.gz), you can run
 Electrum-XUEZ from its root directory, without installing it on your
 system; all the python dependencies are included in the 'packages'
-directory. To run Electrum-XUEZ from its root directory, just do::
+directory (except xevan_hash)
+
+To install xevan-hash dependency in the 'packages' dir run once::
+
+    pip3 install -t packages xevan-hash
+
+. To run Electrum-XUEZ from its root directory, just do::
 
     ./electrum-xuez
 
@@ -51,7 +57,7 @@ Development version
 
 Check out the code from Github::
 
-    git clone https://github.com/akhavr/electrum-xuez.git
+    git clone https://github.com/ddude1/electrum-xuez.git
     cd electrum-xuez
 
 Run install (this should install dependencies)::
