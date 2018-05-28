@@ -4,7 +4,7 @@
 title = Electrum-XUEZ
 
 # (str) Package name
-package.name = Electrum-XUEZ
+package.name = Electrum_XUEZ
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = com.xuezcoin
