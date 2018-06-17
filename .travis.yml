@@ -68,6 +68,7 @@ deploy:
   - build/electrum-xuez/dist/electrum-xuez-$ELECTRUM_XUEZ_VERSION-setup-win32.exe
   - build/electrum-xuez/dist/electrum-xuez-$ELECTRUM_XUEZ_VERSION-setup-win64.exe
   - build/electrum-xuez/bin/Electrum_XUEZ-$ELECTRUM_XUEZ_APK_VERSION-release-unsigned.apk
+  - build/electrum-xuez/bin/Electrum_XUEZ-$ELECTRUM_XUEZ_APK_VERSION-debug.apk
   on:
     repo: ddude1/electrum-xuez
     tags: true
