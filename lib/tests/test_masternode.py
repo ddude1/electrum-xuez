@@ -77,7 +77,7 @@ class TestMasternode(unittest.TestCase):
             '1465161129',
             bitcoin.hash_encode(bitcoin.hash_160(bfh('0269e1abb1ffe231ea045068272a06f0fae231d11b11a54225867d89267faa4e23'))),
             bitcoin.hash_encode(bitcoin.hash_160(bfh('0269e1abb1ffe231ea045068272a06f0fae231d11b11a54225867d89267faa4e23'))),
-            '70940',
+            '70201',
         ]))
         print('7'*50, expected)
         print('8'*50, msg)
